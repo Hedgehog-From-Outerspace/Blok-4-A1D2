@@ -31,13 +31,8 @@ namespace Monopoly
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< Updated upstream
-            Application.Run(new frmMain());
-=======
-            Application.Run(new Form1());
 
-            
->>>>>>> Stashed changes
+            Application.Run(new frmMain());
         }
 
         //ERRORS ARE AVOIDED WITH ADDCLASS METHOD
