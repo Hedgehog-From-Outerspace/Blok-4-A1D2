@@ -14,7 +14,11 @@ namespace Monopoly
     {
         public Form1()
         {
+
             InitializeComponent();
+            Board board = new Board(0);
+            labelTest.Text = board.RollDice().ToString();
+
         }
     }
 }

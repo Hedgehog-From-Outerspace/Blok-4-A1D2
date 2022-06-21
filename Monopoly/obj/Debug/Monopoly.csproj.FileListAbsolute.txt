@@ -1,0 +1,11 @@
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.csproj.AssemblyReference.cache
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.Form1.resources
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.Properties.Resources.resources
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.csproj.GenerateResource.cache
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.csproj.CoreCompileInputs.cache
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\bin\Debug\Monopoly.exe.config
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\bin\Debug\Monopoly.exe
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\bin\Debug\Monopoly.pdb
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.exe
+C:\Users\Lotte\Desktop\Blok 4\Blok-4-A1D2\Monopoly\obj\Debug\Monopoly.pdb

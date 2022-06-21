@@ -9,18 +9,29 @@ namespace Monopoly
     internal class Board
     {
         public int Id { get; set; }
-        public Game Game { get; set; }
-        public List<Card> Cards { get; set; }
+        public List<Card> Deck { get; set; }
         public List<Plot> Plots { get; set; }
-        public Dice Dice { get; set; }
 
-        public Board(int _Id, Game _Game)
+        public Board(int _Id)
         {
             Id = _Id;
-            Game = _Game;
-            Cards = new List<Card>();   //This is data that never changes, need a cardInfo class? Enum?
+            Deck = new List<Card>();   //This is data that never changes, need a cardInfo class? Enum?
             Plots = new List<Plot>();
-            Dice = new Dice();
+        }
+
+        public int RollDice()
+        {
+            return new Random().Next(1,6);
+        }
+
+        public Card GetCard()
+        {
+            return new Card(0, "Hahahah board is gone", "Destroy everything");
+        }
+
+        public void BuyPlot()
+        {
+
         }
     }
 }
