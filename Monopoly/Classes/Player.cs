@@ -13,6 +13,7 @@ namespace Monopoly
         public int Money { get; set; }
         public string Color { get; set; }
         public List<Plot> OwnedPlots { get; set; }
+        public Plot OccupiedPlot { get; set; }
 
         public Player(int _Id, string _Name, string _Color)
         {

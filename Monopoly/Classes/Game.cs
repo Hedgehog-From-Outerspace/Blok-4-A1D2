@@ -15,40 +15,49 @@ namespace Monopoly
         public Board Board { get; set; }
         public List<Question> Questions { get; set; }
 
-        public Game(int _Id, string _Name, List<Player> _Players)
+        public Game(int _Id, string _Name, List<Player> _Players) //List of questions
         {
             Id = _Id;
             Name = _Name;
             Players = _Players;
             CurrentPlayer = GetFirstPlayer();
-            Board = new Board(0);
+            Board = new Board(0, this);
             //Board positions needs to be innitialised, all players need to start at start
         }
 
         public void HandleTurn()
         {
-            //In a turn multiple things need to happen
-
             //Current player rolls the dice 
-            int DiceRoll = CurrentPlayer.RollDice();
+            int diceRoll = CurrentPlayer.RollDice();
+            int index = 0;
+            //Determine plot that current player is on
+            foreach (Plot plot in Board.Plots)
+            {
+                if (plot.OccupiedBy.Contains(CurrentPlayer))
+                {
+                    index = Board.Plots.IndexOf(plot);
 
+                    //Remove current player from prev plot
+                    plot.OccupiedBy.Remove(CurrentPlayer);
+                }
+            }
             //Current player moves to a new plot according to dice rolls
-
-            //Foreach plot in board.plots
-            //if plot == CurrentPlayer.OccupiedPlot
-            //int plotnr == index nr plots
-            //int newPlotNr = plotnr + DiceRoll
-            //CurrentPlayer.OccupiedPlot = Board.Plots[newPlotNr]
+            index += diceRoll;
+            Board.Plots[index].OccupiedBy.Add(CurrentPlayer);
+            CurrentPlayer.OccupiedPlot = Board.Plots[index];                        //Check of dit een add functie moet zijn
 
             //Is current plot owned by anyone?
-            //If so
-            //Ask question
-            //If answer is incorrect then current player loses money to owner of plot
-
-            //If unowned building plot
-            //Option to buy plot
-            //If buy plot, player loses money 
-
+            if (CurrentPlayer.OccupiedPlot.Owner != null)
+            {
+                //Ask question
+                //If answer is incorrect then current player loses money to owner of plot
+            }
+            else
+            {
+                //If unowned building plot
+                //Option to buy plot
+                //If buy plot, player loses money 
+            }
             //If event plot
             //Player is affected by effect
 
