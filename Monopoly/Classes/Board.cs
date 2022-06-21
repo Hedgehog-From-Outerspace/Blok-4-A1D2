@@ -15,13 +15,14 @@ namespace Monopoly
         public Board(int _Id)
         {
             Id = _Id;
-            Deck = new List<Card>();   //This is data that never changes, need a cardInfo class? Enum?
-            Plots = new List<Plot>();
-        }
+            Deck = new List<Card>();
+            //Read card data from DAL
 
-        public int RollDice()
-        {
-            return new Random().Next(1,6);
+            Plots = new List<Plot>();
+            //Read plot data from DAL, hoe het bord eruit ziet.
+
+            //initialise players at start plot
+            //(Board heeft geen relatie met player, moet board dit dan doen? Moeten de relaties veranderen?)
         }
 
         public Card GetCard()

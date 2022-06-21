@@ -22,5 +22,10 @@ namespace Monopoly
             Color = _Color;
             OwnedPlots = new List<Plot>();
         }
+
+        public int RollDice()
+        {
+            return new Random().Next(1, 6);
+        }
     }
 }
