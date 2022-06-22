@@ -12,6 +12,7 @@ namespace Monopoly
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Question> QuestionList { get; set; }
+        private DAL dal;
 
         public Category(int id, string name, string description)
         {
@@ -21,30 +22,35 @@ namespace Monopoly
             QuestionList = new List<Question>();
         }
 
+        public Category()
+        {
+            dal = new DAL();
+        }
+
         public void AddQuestion(Question question)
         {
             QuestionList.Add(question);
             question.AddCategory(this);
         }
 
-        public void Create()
+        public void Create(Category category)
         {
-
+            dal.CreateCategory(category);
         }
 
-        public void Update()
+        public void Update(Category category)
         {
-
+            dal.UpdateCategory(category);
         }
 
-        public void Delete()
+        public void Delete(Category category)
         {
-
+            dal.DeleteCategory(category);
         }
 
         public List<Category> GetList()
         {
-            return new List<Category>();
+            return dal.ReadCategoryList();
         }
     }
 }

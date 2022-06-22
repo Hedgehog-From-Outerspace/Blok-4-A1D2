@@ -12,6 +12,7 @@ namespace Monopoly
         public string QuestionText { get; set; }
         public string Answer { get; set; }
         public Category Category { get; set; }
+        private DAL dal;
 
         public Question(int id, string questionText, string answer)
         {
@@ -20,7 +21,12 @@ namespace Monopoly
             Answer = answer;
         }
 
-        public bool CheckQuestion()
+        public Question()
+        {
+            dal = new DAL();
+        }
+
+        public bool CheckAnswer()
         {
             return true;
         }
@@ -30,24 +36,24 @@ namespace Monopoly
             Category = _category;
         }
 
-        public void Create()
+        public void Create(Question question)
         {
-
+            dal.CreateQuestion(question);
         }
 
-        public void Update()
+        public void Update(Question question)
         {
-
+            dal.UpdateQuestion(question);
         }
 
-        public void Delete()
+        public void Delete(Question question)
         {
-
+            dal.DeleteQuestion(question);
         }
 
-        public List<Question> GetList()
+        public List<Question> GetList(Category category)
         {
-            return new List<Question>();
+            return dal.ReadQuestionList(category);
         }
     }
 }
