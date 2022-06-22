@@ -13,17 +13,21 @@ namespace Monopoly
         public string Answer { get; set; }
         public Category Category { get; set; }
 
-        public Question(int id, string questionText, string answer, Category category)
+        public Question(int id, string questionText, string answer)
         {
             Id = id;
             QuestionText = questionText;
             Answer = answer;
-            Category = category;
         }
 
         public bool CheckQuestion()
         {
             return true;
+        }
+
+        public void AddCategory(Category _category)
+        {
+            Category = _category;
         }
 
         public void Create()
