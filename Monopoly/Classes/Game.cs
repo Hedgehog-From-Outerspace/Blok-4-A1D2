@@ -71,5 +71,11 @@ namespace Monopoly
             int index = random.Next(Players.Count);
             return Players[index];
         }
+
+        public Player DetermineWinner()
+        {
+            //Player with most money + price owned buildings wins
+            return new Player(0, "Winner", "Gold");
+        }
     }
 }
