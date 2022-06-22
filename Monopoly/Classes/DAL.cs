@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using.System.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using.System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Monopoly
 { 
     public class DAL
     {
-        public string connectionString = "Data Source=.;Initial Catalog=StudieApp;Integrated Security=True"
+        public string connectionString = "Data Source=.;Initial Catalog=StudieApp;Integrated Security=True";
         public List<Category> CategoryList = new List<Category>();
         public List<Question> QuestionList = new List<Question>();
         public List<Card> CardList = new List<Card>();
@@ -99,7 +99,7 @@ namespace Monopoly
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand( SQL, conn))
                 {
-                    cmd.Parameters.AddWithValue("@CategoryId", category.ID);
+                    cmd.Parameters.AddWithValue("@CategoryId", category.Id);
                     cmd.ExecuteNonQuery () ;
                 }
             }
@@ -144,7 +144,7 @@ namespace Monopoly
                             {
                                 foreach (Category category in CategoryList)
                                 {
-                                    if (category.Id == Int32.Parse(reader[3].ToString()))
+                                    if (category.Id == Int32.Parse(dataReader[3].ToString()))
                                     {
                                         toAddCategory = category;
                                     }

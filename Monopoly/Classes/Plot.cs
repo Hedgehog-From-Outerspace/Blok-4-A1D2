@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly
 {
-    internal class Plot
+    public class Plot
     {
         public int Id { get; set; }
         public string PlotType { get; set; } //Probably better to do through inheritence

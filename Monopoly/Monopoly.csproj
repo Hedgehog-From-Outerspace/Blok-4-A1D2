@@ -49,7 +49,7 @@
     <Compile Include="Classes\Board.cs" />
     <Compile Include="Classes\Card.cs" />
     <Compile Include="Classes\Category.cs" />
-    <Compile Include="DAL.cs" />
+    <Compile Include="Classes\DAL.cs" />
     <Compile Include="frmCategoryOverview.cs">
       <SubType>Form</SubType>
     </Compile>
