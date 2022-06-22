@@ -16,11 +16,6 @@ namespace Monopoly
         public List<Card> CardList = new List<Card>();
         public List<Plot> PlotList = new List<Plot>();
           
-        
-        public DAL()
-        {
-
-        }
 
 
         public void RefreshDALList()
