@@ -14,6 +14,7 @@ namespace Monopoly
         [STAThread]
         static void Main()
         {
+            //hoi
             List<Player> list = new List<Player>();
             Player player1 = new Player(1, "Joes", "Groen");
             Player player2 = new Player(2, "Hassan", "Blauw");
@@ -30,13 +31,8 @@ namespace Monopoly
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< Updated upstream
-            Application.Run(new frmMain());
-=======
-            Application.Run(new Form1());
 
-            
->>>>>>> Stashed changes
+            Application.Run(new frmMain());
         }
 
         //ERRORS ARE AVOIDED WITH ADDCLASS METHOD
