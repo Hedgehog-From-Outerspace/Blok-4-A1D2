@@ -11,55 +11,36 @@ namespace Monopoly
     public class DAL
     {
         public string connectionString = "Data Source=.;Initial Catalog=StudieApp;Integrated Security=True";
-        public List<Category> CategoryList = new List<Category>();
-        public List<Question> QuestionList = new List<Question>();
-        public List<Card> CardList = new List<Card>();
-        public List<Plot> PlotList = new List<Plot>();
-          
-
-
-        public void RefreshDALList()
-        {
-            FillCategoryListFromDataBase();
-            FillQuestionListFromDataBase();
-            FillCardListFromDataBase();
-            FillPlotListFromDataBase();
-            
-        }
-
-
-
-
 
         // CRUD Category
-        public void FillCategoryListFromDataBase()
+        public List<Category> ReadCategoryList()
         {
-            this.CategoryList.Clear();
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            List<Category> categoryList = new List<Category>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand())
+                String Sql = "Select * FROM Category_Table";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, connection))
                 {
-                    conn.ConnectionString = connectionString;
-                    conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT CategoryId, Name, Description FROM Category_Table";
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            CategoryList.Add(new Category(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString() ));
+                            categoryList.Add(new Category(Int32.Parse(reader[0].ToString()),
+                                                        reader[1].ToString(), 
+                                                        reader[2].ToString())
+                                                        );
                         }
                     }
                 }
             }
+            return categoryList;
         }
-
-
         public void CreateCategory(Category category)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string SQL = "INSERT INTO Category_Table(Name) VALUES (@Name)";
+                string SQL = "INSERT INTO Category_Table(Name, Description) VALUES (@Name, @Description)";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(SQL, connection))
                 {
@@ -69,15 +50,12 @@ namespace Monopoly
                     command.ExecuteNonQuery();
                 }
             }
-            FillCategoryListFromDataBase();
         }
-
-
         public void UpdateCategory (Category category)
         {
              using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string SQL = "UPDATE Category_Table SET Name = @Name, Description = @Description WHERE ID = @ID";
+                string SQL = "UPDATE Category_Table SET Name = @Name, Description = @Description WHERE CategoryId = @CategoryId";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(SQL, connection))
                 {
@@ -87,10 +65,7 @@ namespace Monopoly
                     command.ExecuteNonQuery();
                 }
             }
-            FillCategoryListFromDataBase();
         }
-
-
         public void DeleteCategory (Category category)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -101,67 +76,40 @@ namespace Monopoly
                 {
                     cmd.Parameters.AddWithValue("@CategoryId", category.Id);
                     cmd.ExecuteNonQuery () ;
+                    cmd.CommandText = "DELETE Category_Table WHERE CategoryId = @CategoryId";
+                    cmd.Parameters.AddWithValue("@CategoryId", category.Id);                        //misschien overbodig
+                    cmd.ExecuteNonQuery ();
                 }
             }
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string SQL = "DELETE Category_Table WHERE CategoryId = @CategoryId";
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(SQL, connection))
-                {
-                    command.Parameters.AddWithValue("@CategoryId", category.Id);
-                    command.ExecuteNonQuery();
-                }
-            }
-            FillCategoryListFromDataBase();
         }
 
-
-
-
-
         // CRUD Question
-        public void FillQuestionListFromDataBase()
+        public List<Question> ReadQuestionList(Category category)
         {
-            this.QuestionList.Clear();
+            List<Question> questionList = new List<Question>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand())
+                string Sql = "SELECT * FROM Question_Table WHERE CategoryId = @Id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(Sql, connection))
                 {
-                    connection.ConnectionString = connectionString;
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = "SELECT QuestionId, QuestionText, Answer, CategoryId FROM Question_Table";
+                    command.Parameters.AddWithValue("@Id", category.Id);
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
-                        Category toAddCategory = null;
-
                         while (dataReader.Read())
                         {
-                            try
-                            {
-                                foreach (Category category in CategoryList)
-                                {
-                                    if (category.Id == Int32.Parse(dataReader[3].ToString()))
-                                    {
-                                        toAddCategory = category;
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                                toAddCategory = new Category(0, "", "");
-                            }
-                            QuestionList.Add(new Question(Int32.Parse(dataReader[0].ToString()), dataReader[1].ToString(), dataReader[2].ToString(), toAddCategory));
+                            Question question = new Question(Int32.Parse(dataReader[0].ToString()),
+                                                        dataReader[1].ToString(),
+                                                        dataReader[2].ToString()
+                                                        );
+                            questionList.Add(question);
+                            category.AddQuestion(question);
                         }
                     }
                 }
             }
+            return questionList;
         }
-
-
         public void CreateQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -170,37 +118,29 @@ namespace Monopoly
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(SQL, connection))
                 {                   
-                    command.Parameters.AddWithValue("@QuestionId", question.Id);
                     command.Parameters.AddWithValue("@QuestionText", question.QuestionText);
                     command.Parameters.AddWithValue("@Answer", question.Answer);
-                    command.Parameters.AddWithValue("@CategoryId", question.Category);
+                    command.Parameters.AddWithValue("@CategoryId", question.Category.Id);
                     command.ExecuteNonQuery();
                 }
             }
-            FillQuestionListFromDataBase();
         }
-
-
         public void UpdateQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string SQL = "UPDATE Question_Table SET QuestionText = @QuestionText, Answer = @Answer, CategoryId = @CategoryId WHERE QuestionId = @QuestionId";
+                string SQL = "UPDATE Question_Table SET QuestionText = @QuestionText, Answer = @Answer WHERE QuestionId = @QuestionId";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(SQL, connection))
                 {   
                     command.Parameters.AddWithValue("@QuestionId", question.Id);
                     command.Parameters.AddWithValue("@QuestionText", question.QuestionText);
                     command.Parameters.AddWithValue("@Answer", question.Answer);
-                    command.Parameters.AddWithValue("@CategoryId", question.Category);
                     command.ExecuteNonQuery();
                 }
-                FillQuestionListFromDataBase();
             }
 
         }
-
-
         public void DeleteQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -213,61 +153,50 @@ namespace Monopoly
                     command.ExecuteNonQuery();
                 }
             }
-            FillQuestionListFromDataBase();
         }
 
-        
-
-
-
         // READ Plot
-        public void FillPlotListFromDataBase()
+        public List<Plot> ReadPlotList()
         {
-            this.PlotList.Clear();
+            List<Plot> plotList = new List<Plot>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand())
+                string Sql = "SELECT * FROM Plot_Table";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(Sql, connection))
                 {
-                    connection.ConnectionString = connectionString;
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = "SELECT PlotId, PlotType FROM Plot_Table";
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
                         {                  
-                            PlotList.Add(new Plot(Int32.Parse(dataReader[0].ToString()), dataReader[1].ToString()));
+                            plotList.Add(new Plot(Int32.Parse(dataReader[0].ToString()), dataReader[1].ToString()));
                         }
                     }
                 }
             }
+            return plotList;
         }
 
-
-
-
-
         // READ Cards
-        public void FillCardListFromDataBase()
+        public List<Card> ReadCardList()
         {
-            this.CardList.Clear();
+            List<Card> cardList = new List<Card>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand())
+                string Sql = "SELECT * FROM Card_Table";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, conn))
                 {
-                    conn.ConnectionString = connectionString;
-                    conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT CardId, CardText, Effect FROM Card_Table";
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            CardList.Add(new Card(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString() ));
+                            cardList.Add(new Card(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString() ));
                         }
                     }
                 }
             }
+            return cardList;
         }
     }
 }
