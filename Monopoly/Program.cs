@@ -30,19 +30,14 @@ namespace Monopoly
 
         private static void PlayGame(List<Player> list)
         {
-            Game game = new Game(0, "new game", list);
+            Category category = new Category();
+            Game game = new Game(0, list, category);
             bool endGame = false;
             while (endGame == false)
             {
                 game.HandleTurn();
                 //determine endGame
-                foreach (Player player in list)
-                {
-                    if (player.Money <= 0)
-                    {
-                        endGame = true;
-                    }
-                }
+                endGame = game.CheckIfBankrupt(list);
             }
             game.DetermineWinner();
         }

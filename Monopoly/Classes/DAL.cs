@@ -155,6 +155,29 @@ namespace Monopoly
             }
         }
 
+        //CRUD Game
+        public List<Game> ReadGameList()
+        {
+            List<Game> gameList = new List<Game>();
+            return gameList;
+        }
+        public void CreateGame()
+        {
+
+        }
+        public void UpdateGame()
+        {
+
+        }
+        public void DeleteGame()
+        {
+
+        }
+
+        //CRUD Board
+
+        //CRUD Player
+
         // READ Plot
         public List<Plot> ReadPlotList()
         {

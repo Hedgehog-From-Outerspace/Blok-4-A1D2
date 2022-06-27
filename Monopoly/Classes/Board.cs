@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly
 {
-    internal class Board
+    public class Board
     {
         public int Id { get; set; }
         public List<Card> Deck { get; set; }
@@ -30,7 +30,7 @@ namespace Monopoly
             foreach (Player player in Game.Players)
             {
                 Plots[0].OccupiedBy.Add(player);
-                player.OccupiedPlot = Plots[0]; //CHECK MET MIEL OF DIT NIET EEN ADD FUNCTIE MOET ZIJN
+                player.OccupiedPlot = Plots[0];
             }
         }
 
@@ -40,6 +40,7 @@ namespace Monopoly
             var random = new Random();
             int index = random.Next(Deck.Count);
             Card card = Deck[index];
+
             //Drawn card is removed from deck
             Deck.Remove(card);
             return card;
@@ -51,6 +52,26 @@ namespace Monopoly
             //detract plot price from player money
             //add player to plot owner
             //add plot to ownedPlots player
+        }
+
+        public void Create()
+        {
+
+        }
+
+        public void Read()
+        {
+
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Delete()
+        {
+
         }
     }
 }
