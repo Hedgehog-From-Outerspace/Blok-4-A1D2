@@ -11,7 +11,7 @@ namespace Monopoly
         public int Id { get; set; }
         public string CardText { get; set; }
         public string Effect { get; set; } //Possibly also with inheritence
-        public DAL dal;
+        private DAL dal;
 
         public Card(int _Id, string _CardText, string _Effect)
         {
@@ -23,6 +23,21 @@ namespace Monopoly
         public Card()
         {
             dal = new DAL();
+        }
+
+        public void Create()
+        {
+
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Delete()
+        {
+
         }
 
         public List<Card> GetList()

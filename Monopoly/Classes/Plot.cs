@@ -27,6 +27,21 @@ namespace Monopoly
             dal = new DAL();
         }
 
+        public void Create()
+        {
+
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Delete()
+        {
+
+        }
+
         public List<Plot> GetList()
         {
             return dal.ReadPlotList();
