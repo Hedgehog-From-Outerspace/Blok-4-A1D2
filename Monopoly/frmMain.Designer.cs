@@ -31,6 +31,7 @@
             this.btnPlayQuiz = new System.Windows.Forms.Button();
             this.btnManageQuestions = new System.Windows.Forms.Button();
             this.lblClose = new System.Windows.Forms.Label();
+            this.btnManageGames = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPlayQuiz
@@ -70,13 +71,25 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+            // btnManageGames
+            // 
+            this.btnManageGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnManageGames.Location = new System.Drawing.Point(60, 267);
+            this.btnManageGames.Name = "btnManageGames";
+            this.btnManageGames.Size = new System.Drawing.Size(300, 100);
+            this.btnManageGames.TabIndex = 4;
+            this.btnManageGames.Text = "Games Beheren";
+            this.btnManageGames.UseVisualStyleBackColor = true;
+            this.btnManageGames.Click += new System.EventHandler(this.btnManageGames_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(210, 161);
+            this.ClientSize = new System.Drawing.Size(420, 422);
+            this.Controls.Add(this.btnManageGames);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.btnManageQuestions);
             this.Controls.Add(this.btnPlayQuiz);
@@ -96,6 +109,7 @@
         private System.Windows.Forms.Button btnPlayQuiz;
         private System.Windows.Forms.Button btnManageQuestions;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Button btnManageGames;
     }
 }
 
