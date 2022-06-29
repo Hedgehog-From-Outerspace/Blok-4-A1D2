@@ -19,6 +19,7 @@ namespace Monopoly
             Id = id;
             QuestionText = questionText;
             Answer = answer;
+            dal = new DAL();
         }
 
         public Question()

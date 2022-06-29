@@ -76,8 +76,8 @@ namespace Monopoly
                 {
                     cmd.Parameters.AddWithValue("@CategoryId", category.Id);
                     cmd.ExecuteNonQuery () ;
-                    cmd.CommandText = "DELETE Category_Table WHERE CategoryId = @CategoryId";
-                    cmd.Parameters.AddWithValue("@CategoryId", category.Id);                        //misschien overbodig
+                    cmd.CommandText = "DELETE Category_Table WHERE CategoryId = @Id";
+                    cmd.Parameters.AddWithValue("@Id", category.Id);                        //misschien overbodig
                     cmd.ExecuteNonQuery ();
                 }
             }
