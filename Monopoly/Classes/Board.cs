@@ -29,7 +29,6 @@ namespace Monopoly
             //initialise players at start plot
             foreach (Player player in Game.Players)
             {
-                Plots[0].OccupiedBy.Add(player);
                 player.OccupiedPlot = Plots[0];
             }
         }

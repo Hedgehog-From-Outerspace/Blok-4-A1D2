@@ -59,9 +59,24 @@ namespace Monopoly
             Close();
         }
 
+        private void frmCategoryOverview_Load(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            dgvCategories.AutoGenerateColumns = false;
+            dgvCategories.DataSource = category.GetList();
+        }
+
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
+            Category category = new Category(0, txtbCategoryName.Text, "");
+            category.Create(category);
+            dgvCategories.DataSource = category.GetList();
             MessageBox.Show("Category Added!");
+        }
+
+        private void dgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
