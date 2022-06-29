@@ -11,8 +11,9 @@ using System.Windows.Forms;
 
 namespace Monopoly
 {
-    public partial class frmPlayQuiz : Form
+    public partial class frmGameOverview : Form
     {
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -27,19 +28,21 @@ namespace Monopoly
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
-        public frmPlayQuiz()
+
+
+        public frmGameOverview()
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 40, 40));
         }
 
-        private void frmPlayQuiz_MouseDown(object sender, MouseEventArgs e)
+        private void frmGameOverview_MouseDown(object sender, MouseEventArgs e)
         {
             _dragging = true;
             _start_point = new Point(e.X, e.Y);
         }
 
-        private void frmPlayQuiz_MouseMove(object sender, MouseEventArgs e)
+        private void frmGameOverview_MouseMove(object sender, MouseEventArgs e)
         {
             if (_dragging)
             {
@@ -48,20 +51,14 @@ namespace Monopoly
             }
         }
 
-        private void frmPlayQuiz_MouseUp(object sender, MouseEventArgs e)
+        private void frmGameOverview_MouseUp(object sender, MouseEventArgs e)
         {
             _dragging = false;
         }
 
-        private void lblClose_Click(object sender, EventArgs e)
+        private void lblCloseButton_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnPlay_Click(object sender, EventArgs e)
-        {
-            frmBoard Board = new frmBoard();
-            Board.ShowDialog();
         }
     }
 }

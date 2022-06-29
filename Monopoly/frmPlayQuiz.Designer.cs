@@ -29,7 +29,6 @@ namespace Monopoly
         /// </summary>
         private void InitializeComponent()
         {
-            this.lboxCategories = new System.Windows.Forms.ListBox();
             this.lblColorRed = new System.Windows.Forms.Label();
             this.lblColorGreen = new System.Windows.Forms.Label();
             this.lblColorYellow = new System.Windows.Forms.Label();
@@ -41,16 +40,8 @@ namespace Monopoly
             this.lblClose = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.lblSelectedCategory = new System.Windows.Forms.Label();
+            this.cboxCategories = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // lboxCategories
-            // 
-            this.lboxCategories.FormattingEnabled = true;
-            this.lboxCategories.ItemHeight = 25;
-            this.lboxCategories.Location = new System.Drawing.Point(50, 55);
-            this.lboxCategories.Name = "lboxCategories";
-            this.lboxCategories.Size = new System.Drawing.Size(315, 29);
-            this.lboxCategories.TabIndex = 1;
             // 
             // lblColorRed
             // 
@@ -144,6 +135,7 @@ namespace Monopoly
             this.btnPlay.TabIndex = 0;
             this.btnPlay.Text = "Play Game";
             this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // lblSelectedCategory
             // 
@@ -155,12 +147,21 @@ namespace Monopoly
             this.lblSelectedCategory.TabIndex = 8;
             this.lblSelectedCategory.Text = "**SELECTED CATEGORY**";
             // 
+            // cboxCategories
+            // 
+            this.cboxCategories.FormattingEnabled = true;
+            this.cboxCategories.Location = new System.Drawing.Point(50, 58);
+            this.cboxCategories.Name = "cboxCategories";
+            this.cboxCategories.Size = new System.Drawing.Size(308, 33);
+            this.cboxCategories.TabIndex = 9;
+            // 
             // frmPlayQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(412, 508);
+            this.Controls.Add(this.cboxCategories);
             this.Controls.Add(this.lblSelectedCategory);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.txtbColorBlueName);
@@ -171,7 +172,6 @@ namespace Monopoly
             this.Controls.Add(this.lblColorYellow);
             this.Controls.Add(this.lblColorGreen);
             this.Controls.Add(this.lblColorRed);
-            this.Controls.Add(this.lboxCategories);
             this.Controls.Add(this.btnPlay);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPlayQuiz";
@@ -186,7 +186,6 @@ namespace Monopoly
         }
 
         #endregion
-        private System.Windows.Forms.ListBox lboxCategories;
         private System.Windows.Forms.Label lblColorRed;
         private System.Windows.Forms.Label lblColorGreen;
         private System.Windows.Forms.Label lblColorYellow;
@@ -198,5 +197,6 @@ namespace Monopoly
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label lblSelectedCategory;
+        private System.Windows.Forms.ComboBox cboxCategories;
     }
 }
