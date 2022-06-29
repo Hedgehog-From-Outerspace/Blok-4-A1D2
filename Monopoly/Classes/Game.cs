@@ -45,7 +45,7 @@ namespace Monopoly
                 if (!question.CheckAnswer(answer))
                 {
                     //Wrong answer, player pays owner
-                    CurrentPlayer.Money -= 0;//un geld amount, does this need to be plot attr?
+                    CurrentPlayer.Money -= 0;//un geld amount, needs to be a plot attr, or derived gromp 
                     if (CurrentPlayer.Money < 0)
                     {
                         CurrentPlayer.Money = 0;
@@ -102,23 +102,12 @@ namespace Monopoly
         {
             //Current player rolls the dice 
             int diceRoll = CurrentPlayer.RollDice();
-            int index = 0;
 
             //Determine plot that current player is on
-            foreach (Plot plot in Board.Plots)
-            {
-                if (plot.OccupiedBy.Contains(CurrentPlayer))
-                {
-                    index = Board.Plots.IndexOf(plot);
-
-                    //Remove current player from prev plot
-                    plot.OccupiedBy.Remove(CurrentPlayer);
-                }
-            }
+            int index = Board.Plots.IndexOf(CurrentPlayer.OccupiedPlot);
 
             //Current player moves to a new plot according to dice rolls
             index += diceRoll;
-            Board.Plots[index].OccupiedBy.Add(CurrentPlayer);
             CurrentPlayer.OccupiedPlot = Board.Plots[index];
         }
 

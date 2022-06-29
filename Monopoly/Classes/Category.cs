@@ -20,6 +20,7 @@ namespace Monopoly
             Name = name;
             Description = description;
             QuestionList = new List<Question>();
+            dal = new DAL();
         }
 
         public Category()
