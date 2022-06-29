@@ -59,9 +59,46 @@ namespace Monopoly
             Close();
         }
 
+        private void frmCategoryOverview_Load(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            dgvCategories.AutoGenerateColumns = false;
+            dgvCategories.DataSource = category.GetList();
+        }
+
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
+            Category category = new Category(0, txtbCategoryName.Text, "");
+            category.Create(category);
+            dgvCategories.DataSource = category.GetList();
             MessageBox.Show("Category Added!");
+        }
+
+        private void dgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = e.RowIndex;
+            var column = e.ColumnIndex;
+
+            //Edit Button
+
+            //Add Question Button
+            if (column == 2)
+            {
+                var category = dgvCategories.CurrentRow.DataBoundItem as Category;
+                frmQuestionOverview frm = new frmQuestionOverview(category);
+                frm.ShowDialog();
+            }
+            //Delete Button
+            else if (column == 3)
+            {
+                if (MessageBox.Show("Weet je zeker dat je de category wil verwijderen?", "Delete Category", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var category = dgvCategories.CurrentRow.DataBoundItem as Category;
+                    category.Delete(category);
+                    dgvCategories.DataSource = category.GetList();
+                    MessageBox.Show("Category is verwijderd");
+                }
+            }
         }
     }
 }

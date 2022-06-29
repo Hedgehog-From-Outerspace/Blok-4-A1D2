@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly
 {
-    internal class Board
+    public class Board
     {
         public int Id { get; set; }
         public List<Card> Deck { get; set; }
@@ -19,35 +19,56 @@ namespace Monopoly
             Game = _Game;
 
             //Read card data from DAL
-            Deck = new List<Card>();
-            for (int i = 0; i < 15; i++)
-            {
-                Card card = new Card(0, "Cardtext: " + i.ToString(), "Effect: " + i.ToString());
-                Deck.Add(card);
-            }
+            Card card = new Card();
+            Deck = card.GetList();
 
             //Read plot data from DAL, hoe het bord eruit ziet.
-            Plots = new List<Plot>();
-            for (int i = 0; i < 30; i++)
-            {
-                Plot plot = new Plot(0, "huis");
-                Plots.Add(plot);
-            }
+            Plot plot = new Plot();
+            Plots = plot.GetList();
+            
             //initialise players at start plot
             foreach (Player player in Game.Players)
             {
-                Plots[0].OccupiedBy.Add(player);
-                player.OccupiedPlot = Plots[0]; //CHECK MET MIEL OF DIT NIET EEN ADD FUNCTIE MOET ZIJN
+                player.OccupiedPlot = Plots[0];
             }
-            //(Board heeft geen relatie met player, moet board dit dan doen? Moeten de relaties veranderen?)
         }
 
-        public Card GetCard()
+        public Card DrawCard()
         {
-            return new Card(0, "Hahahah board is gone", "Destroy everything");
+            //random card is drawn
+            var random = new Random();
+            int index = random.Next(Deck.Count);
+            Card card = Deck[index];
+
+            //Drawn card is removed from deck
+            Deck.Remove(card);
+            return card;
         }
 
         public void BuyPlot()
+        {
+            //Check if player has enough money
+            //detract plot price from player money
+            //add player to plot owner
+            //add plot to ownedPlots player
+        }
+
+        public void Create()
+        {
+
+        }
+
+        public void Read()
+        {
+
+        }
+
+        public void Update()
+        {
+
+        }
+
+        public void Delete()
         {
 
         }

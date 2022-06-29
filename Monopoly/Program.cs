@@ -14,27 +14,24 @@ namespace Monopoly
         [STAThread]
         static void Main()
         {
-            //hoi
-            List<Player> list = new List<Player>();
-            Player player1 = new Player(1, "Joes", "Groen");
-            Player player2 = new Player(2, "Hassan", "Blauw");
-            Player player3 = new Player(3, "Lotte", "Rood");
-            list.Add(player1);
-            list.Add(player2);
-            list.Add(player3);
-            Game game = new Game(0, "nieuw spel", list);
-
-            Console.WriteLine($"De eerste speler is {game.CurrentPlayer.Name}");
-            Console.WriteLine($"Er zijn {game.Board.Deck.Count()} kaarten in het deck.");
-
-            game.HandleTurn();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new frmMain());
         }
 
-        //ERRORS ARE AVOIDED WITH ADDCLASS METHOD
+        private static void PlayGame(List<Player> list)
+        {
+            Category category = new Category();
+            Game game = new Game(0, list, category);
+            bool endGame = false;
+            while (endGame == false)
+            {
+                game.HandleTurn();
+                //determine endGame
+                endGame = game.CheckIfBankrupt(list);
+            }
+            game.DetermineWinner();
+        }
     }
 }

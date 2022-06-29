@@ -12,38 +12,58 @@ namespace Monopoly
         public string QuestionText { get; set; }
         public string Answer { get; set; }
         public Category Category { get; set; }
+        private DAL dal;
 
-        public Question(int id, string questionText, string answer, Category category)
+        public Question(int id, string questionText, string answer)
         {
             Id = id;
             QuestionText = questionText;
             Answer = answer;
-            Category = category;
+            dal = new DAL();
         }
 
-        public bool CheckQuestion()
+        public Question()
         {
-            return true;
+            dal = new DAL();
         }
 
-        public void Create()
+        public bool CheckAnswer(string Answer)
         {
-
+            bool result;
+            if (this.Answer == Answer)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
 
-        public void Update()
+        public void AddCategory(Category _category)
         {
-
+            Category = _category;
         }
 
-        public void Delete()
+        public void Create(Question question)
         {
-
+            dal.CreateQuestion(question);
         }
 
-        public List<Question> GetList()
+        public void Update(Question question)
         {
-            return new List<Question>();
+            dal.UpdateQuestion(question);
+        }
+
+        public void Delete(Question question)
+        {
+            dal.DeleteQuestion(question);
+        }
+
+        public List<Question> GetList(Category category)
+        {
+            return dal.ReadQuestionList(category);
         }
     }
 }
