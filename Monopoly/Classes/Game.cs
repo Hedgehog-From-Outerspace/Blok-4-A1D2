@@ -15,14 +15,12 @@ namespace Monopoly
         public Board Board { get; set; }
         public List<Question> Questions { get; set; }
 
-        public Game(int _Id, List<Player> _Players, Category _Category) //List of questions
+        public Game(int _Id) //List of questions
         {
             Id = _Id;
-            Players = _Players;
             CurrentPlayer = GetFirstPlayer();
             Board = new Board(0, this);
             Questions = new List<Question>();
-            Category = _Category;
         }
 
         public void HandleTurn()
@@ -96,6 +94,11 @@ namespace Monopoly
         public void AddCategory(Category category)
         {
             this.Category = category;
+        }
+
+        public void AddPlayers(List<Player> Players)
+        {
+            this.Players = Players;
         }
 
         public void MovePlayer()
