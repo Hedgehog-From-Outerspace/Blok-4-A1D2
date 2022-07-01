@@ -36,9 +36,10 @@
             // btnManageQuestions
             // 
             this.btnManageQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageQuestions.Location = new System.Drawing.Point(60, 43);
+            this.btnManageQuestions.Location = new System.Drawing.Point(46, 43);
+            this.btnManageQuestions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnManageQuestions.Name = "btnManageQuestions";
-            this.btnManageQuestions.Size = new System.Drawing.Size(150, 52);
+            this.btnManageQuestions.Size = new System.Drawing.Size(300, 100);
             this.btnManageQuestions.TabIndex = 2;
             this.btnManageQuestions.Text = "Vragen Beheren";
             this.btnManageQuestions.UseVisualStyleBackColor = true;
@@ -49,10 +50,10 @@
             this.lblClose.AutoSize = true;
             this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.Red;
-            this.lblClose.Location = new System.Drawing.Point(6, 7);
-            this.lblClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblClose.Location = new System.Drawing.Point(12, 13);
+            this.lblClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(15, 13);
+            this.lblClose.Size = new System.Drawing.Size(27, 25);
             this.lblClose.TabIndex = 3;
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
@@ -60,7 +61,8 @@
             // btnManageGames
             // 
             this.btnManageGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnManageGames.Location = new System.Drawing.Point(60, 149);
+            this.btnManageGames.Location = new System.Drawing.Point(46, 155);
+            this.btnManageGames.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnManageGames.Name = "btnManageGames";
             this.btnManageGames.Size = new System.Drawing.Size(300, 100);
             this.btnManageGames.TabIndex = 4;
@@ -70,15 +72,16 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(420, 292);
+            this.ClientSize = new System.Drawing.Size(390, 298);
             this.Controls.Add(this.btnManageGames);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.btnManageQuestions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

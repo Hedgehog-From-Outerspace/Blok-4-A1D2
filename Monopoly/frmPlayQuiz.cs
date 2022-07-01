@@ -60,8 +60,7 @@ namespace Monopoly
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            frmBoard Board = new frmBoard();
-            Board.ShowDialog();
+            
         }
     }
 }
