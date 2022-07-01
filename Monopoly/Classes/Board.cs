@@ -24,12 +24,7 @@ namespace Monopoly
             //Read plot data from DAL, hoe het bord eruit ziet.
             Plot plot = new Plot();
             Plots = plot.GetStandardList();
-            
-            //initialise players at start plot
-            foreach (Player player in Game.Players)
-            {
-                player.OccupiedPlot = Plots[0];
-            }
+
         }
 
         public Card DrawCard()
@@ -55,6 +50,12 @@ namespace Monopoly
         public void AddGame(Game game)
         {
             this.Game = game;
+
+            //initialise players at start plot
+            foreach (Player player in Game.Players)
+            {
+                player.OccupiedPlot = Plots[0];
+            }
         }
 
         public void Create()

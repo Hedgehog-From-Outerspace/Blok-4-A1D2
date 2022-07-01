@@ -18,9 +18,6 @@ namespace Monopoly
         public Game(int _Id) //List of questions
         {
             Id = _Id;
-            CurrentPlayer = GetFirstPlayer();
-            Board = new Board(0);
-            Board.AddGame(this);
             Questions = new List<Question>();
         }
 
@@ -71,7 +68,7 @@ namespace Monopoly
         public Player DetermineWinner()
         {
             //Player with most money + price owned buildings wins
-            return new Player(0, "Winner", "Gold");
+            return new Player(0, "Winner");
         }
 
         public bool CheckIfBankrupt(List<Player> list)
@@ -135,6 +132,7 @@ namespace Monopoly
         public void AddPlayers(List<Player> Players)
         {
             this.Players = Players;
+            GetFirstPlayer();
         }
 
         public void AddBoard(Board board)
@@ -180,6 +178,8 @@ namespace Monopoly
 
         private int Wrap (int input, int min, int max)
         {
+            //To Wrap around from the end of the list to the start of the list
+            //Using modulo makes using input numbers larger than 2 * max possible
             if (input< min)
             {
                 return max-(min-input)%(max-min);
