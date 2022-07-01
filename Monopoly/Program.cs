@@ -23,6 +23,7 @@ namespace Monopoly
             Players.Add(new Player(2, "Lotte"));
             game.AddPlayers(Players);
             game.AddBoard(board);
+            \
             game.AddCategory(category);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
