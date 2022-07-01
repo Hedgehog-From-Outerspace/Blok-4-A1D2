@@ -40,9 +40,14 @@ namespace Monopoly
 
         }
 
-        public List<Card> GetList()
+        public List<Card> GetStandardList()
         {
-            return dal.ReadCardList();
+            return dal.ReadStandardCardList();
+        }
+
+        public List<Card> GetList(Board board)
+        {
+            return dal.ReadCardList(board);
         }
     }
 }

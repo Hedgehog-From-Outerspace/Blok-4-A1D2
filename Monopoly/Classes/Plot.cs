@@ -8,6 +8,15 @@ namespace Monopoly
 {
     public class Plot
     {
+        //Start
+        //House1
+        //House2
+        //House3
+        //Card
+        //Free Parking
+        //Jail
+        //End
+
         public int Id { get; set; }
         public string PlotType { get; set; } //Probably better to do through inheritence
         public int Price { get; set; }
@@ -40,9 +49,14 @@ namespace Monopoly
 
         }
 
-        public List<Plot> GetList()
+        public List<Plot> GetList(Board board)
         {
-            return dal.ReadPlotList();
+            return dal.ReadPlotList(board);
+        }
+
+        public List<Plot> GetStandardList()
+        {
+            return dal.ReadStandardPlotList();
         }
     }
 }

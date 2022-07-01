@@ -23,7 +23,7 @@ namespace Monopoly
         private static void PlayGame(List<Player> list)
         {
             Category category = new Category();
-            Game game = new Game(0, list, category);
+            Game game = new Game(0);
             bool endGame = false;
             while (endGame == false)
             {
