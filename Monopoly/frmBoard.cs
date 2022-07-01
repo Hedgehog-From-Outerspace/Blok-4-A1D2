@@ -12,9 +12,17 @@ namespace Monopoly
 {
     public partial class frmBoard : Form
     {
-        public frmBoard()
+        public Game Game;
+        public frmBoard(Game _Game)
         {
+            Game = _Game;
             InitializeComponent();
+        }
+
+        private void frmBoard_Load(object sender, EventArgs e)
+        {
+            txtbConsole.ReadOnly = true;
+            txtbConsole.Text = "Test\r\nDit is een test!";
         }
     }
 }

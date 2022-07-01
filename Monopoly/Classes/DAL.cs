@@ -179,15 +179,38 @@ namespace Monopoly
         //CRUD Player
 
         // READ Plot
-        public List<Plot> ReadPlotList()
+        public List<Plot> ReadStandardPlotList()
         {
+            //Read first 29 plots
             List<Plot> plotList = new List<Plot>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string Sql = "SELECT * FROM Plot_Table";
+                string Sql = "SELECT TOP 29 * FROM Plot_Table";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(Sql, connection))
                 {
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            plotList.Add(new Plot(Int32.Parse(dataReader[0].ToString()), dataReader[1].ToString()));
+                        }
+                    }
+                }
+            }
+            return plotList;
+        }
+        public List<Plot> ReadPlotList(Board board)
+        {
+            //Read Plots that belong to boardId
+            List<Plot> plotList = new List<Plot>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string Sql = "SELECT * FROM Plot_Table WHERE BoardId = @BoardId";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(Sql, connection))
+                {
+                    command.Parameters.AddWithValue("@BoardId", board.Id);
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
@@ -201,15 +224,37 @@ namespace Monopoly
         }
 
         // READ Cards
-        public List<Card> ReadCardList()
+        public List<Card> ReadStandardCardList()
+        {
+            //Read first 15 cards
+            List<Card> cardList = new List<Card>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string Sql = "SELECT TOP 15 * FROM Card_Table";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            cardList.Add(new Card(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString()));
+                        }
+                    }
+                }
+            }
+            return cardList;
+        }
+        public List<Card> ReadCardList(Board board)
         {
             List<Card> cardList = new List<Card>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string Sql = "SELECT * FROM Card_Table";
+                string Sql = "SELECT * FROM Card_Table WHERE BoardId = @BoardId";
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Sql, conn))
                 {
+                    cmd.Parameters.AddWithValue("@BoardId", board.Id);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

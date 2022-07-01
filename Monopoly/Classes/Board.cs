@@ -13,24 +13,18 @@ namespace Monopoly
         public List<Plot> Plots { get; set; }
         public Game Game { get; set; }
 
-        public Board(int _Id, Game _Game)
+        public Board(int _Id)
         {
             Id = _Id;
-            Game = _Game;
 
             //Read card data from DAL
             Card card = new Card();
-            Deck = card.GetList();
+            Deck = card.GetStandardList();
 
             //Read plot data from DAL, hoe het bord eruit ziet.
             Plot plot = new Plot();
-            Plots = plot.GetList();
-            
-            //initialise players at start plot
-            foreach (Player player in Game.Players)
-            {
-                player.OccupiedPlot = Plots[0];
-            }
+            Plots = plot.GetStandardList();
+
         }
 
         public Card DrawCard()
@@ -51,6 +45,17 @@ namespace Monopoly
             //detract plot price from player money
             //add player to plot owner
             //add plot to ownedPlots player
+        }
+
+        public void AddGame(Game game)
+        {
+            this.Game = game;
+
+            //initialise players at start plot
+            foreach (Player player in Game.Players)
+            {
+                player.OccupiedPlot = Plots[0];
+            }
         }
 
         public void Create()

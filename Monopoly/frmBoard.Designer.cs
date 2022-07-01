@@ -74,287 +74,324 @@ namespace Monopoly
             // 
             // pnlPlot1
             // 
-            this.pnlPlot1.Location = new System.Drawing.Point(1170, 0);
+            this.pnlPlot1.Location = new System.Drawing.Point(585, 0);
+            this.pnlPlot1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot1.Name = "pnlPlot1";
-            this.pnlPlot1.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot1.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot1.TabIndex = 0;
             // 
             // pnlPlot4
             // 
-            this.pnlPlot4.Location = new System.Drawing.Point(1170, 390);
+            this.pnlPlot4.Location = new System.Drawing.Point(585, 203);
+            this.pnlPlot4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot4.Name = "pnlPlot4";
-            this.pnlPlot4.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot4.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot4.TabIndex = 1;
             // 
             // pnlPlot3
             // 
-            this.pnlPlot3.Location = new System.Drawing.Point(1170, 260);
+            this.pnlPlot3.Location = new System.Drawing.Point(585, 135);
+            this.pnlPlot3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot3.Name = "pnlPlot3";
-            this.pnlPlot3.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot3.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot3.TabIndex = 1;
             // 
             // pnlPlot2
             // 
-            this.pnlPlot2.Location = new System.Drawing.Point(1170, 130);
+            this.pnlPlot2.Location = new System.Drawing.Point(585, 68);
+            this.pnlPlot2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot2.Name = "pnlPlot2";
-            this.pnlPlot2.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot2.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot2.TabIndex = 1;
             // 
             // pnlPlot5
             // 
-            this.pnlPlot5.Location = new System.Drawing.Point(1170, 520);
+            this.pnlPlot5.Location = new System.Drawing.Point(585, 270);
+            this.pnlPlot5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot5.Name = "pnlPlot5";
-            this.pnlPlot5.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot5.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot5.TabIndex = 1;
             // 
             // pnlPlot6
             // 
-            this.pnlPlot6.Location = new System.Drawing.Point(1170, 650);
+            this.pnlPlot6.Location = new System.Drawing.Point(585, 338);
+            this.pnlPlot6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot6.Name = "pnlPlot6";
-            this.pnlPlot6.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot6.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot6.TabIndex = 1;
             // 
             // pnlPlot7
             // 
-            this.pnlPlot7.Location = new System.Drawing.Point(1170, 780);
+            this.pnlPlot7.Location = new System.Drawing.Point(585, 406);
+            this.pnlPlot7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot7.Name = "pnlPlot7";
-            this.pnlPlot7.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot7.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot7.TabIndex = 1;
             // 
             // pnlPlot8
             // 
-            this.pnlPlot8.Location = new System.Drawing.Point(1170, 910);
+            this.pnlPlot8.Location = new System.Drawing.Point(585, 473);
+            this.pnlPlot8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot8.Name = "pnlPlot8";
-            this.pnlPlot8.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot8.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot8.TabIndex = 1;
             // 
             // pnlPlot9
             // 
-            this.pnlPlot9.Location = new System.Drawing.Point(1170, 1040);
+            this.pnlPlot9.Location = new System.Drawing.Point(585, 541);
+            this.pnlPlot9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot9.Name = "pnlPlot9";
-            this.pnlPlot9.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot9.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot9.TabIndex = 1;
             // 
             // pnlPlot10
             // 
-            this.pnlPlot10.Location = new System.Drawing.Point(1170, 1170);
+            this.pnlPlot10.Location = new System.Drawing.Point(585, 608);
+            this.pnlPlot10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot10.Name = "pnlPlot10";
-            this.pnlPlot10.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot10.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot10.TabIndex = 1;
             // 
             // pnlPlot11
             // 
-            this.pnlPlot11.Location = new System.Drawing.Point(1040, 1170);
+            this.pnlPlot11.Location = new System.Drawing.Point(520, 608);
+            this.pnlPlot11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot11.Name = "pnlPlot11";
-            this.pnlPlot11.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot11.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot11.TabIndex = 2;
             // 
             // pnlPlot12
             // 
-            this.pnlPlot12.Location = new System.Drawing.Point(910, 1170);
+            this.pnlPlot12.Location = new System.Drawing.Point(455, 608);
+            this.pnlPlot12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot12.Name = "pnlPlot12";
-            this.pnlPlot12.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot12.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot12.TabIndex = 2;
             // 
             // pnlPlot13
             // 
-            this.pnlPlot13.Location = new System.Drawing.Point(780, 1170);
+            this.pnlPlot13.Location = new System.Drawing.Point(390, 608);
+            this.pnlPlot13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot13.Name = "pnlPlot13";
-            this.pnlPlot13.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot13.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot13.TabIndex = 2;
             // 
             // pnlPlot14
             // 
-            this.pnlPlot14.Location = new System.Drawing.Point(650, 1170);
+            this.pnlPlot14.Location = new System.Drawing.Point(325, 608);
+            this.pnlPlot14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot14.Name = "pnlPlot14";
-            this.pnlPlot14.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot14.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot14.TabIndex = 2;
             // 
             // pnlPlot15
             // 
-            this.pnlPlot15.Location = new System.Drawing.Point(520, 1170);
+            this.pnlPlot15.Location = new System.Drawing.Point(260, 608);
+            this.pnlPlot15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot15.Name = "pnlPlot15";
-            this.pnlPlot15.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot15.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot15.TabIndex = 2;
             // 
             // pnlPlot16
             // 
-            this.pnlPlot16.Location = new System.Drawing.Point(390, 1170);
+            this.pnlPlot16.Location = new System.Drawing.Point(195, 608);
+            this.pnlPlot16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot16.Name = "pnlPlot16";
-            this.pnlPlot16.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot16.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot16.TabIndex = 2;
             // 
             // pnlPlot17
             // 
-            this.pnlPlot17.Location = new System.Drawing.Point(260, 1170);
+            this.pnlPlot17.Location = new System.Drawing.Point(130, 608);
+            this.pnlPlot17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot17.Name = "pnlPlot17";
-            this.pnlPlot17.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot17.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot17.TabIndex = 2;
             // 
             // pnlPlot18
             // 
-            this.pnlPlot18.Location = new System.Drawing.Point(130, 1170);
+            this.pnlPlot18.Location = new System.Drawing.Point(65, 608);
+            this.pnlPlot18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot18.Name = "pnlPlot18";
-            this.pnlPlot18.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot18.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot18.TabIndex = 2;
             // 
             // pnlPlot19
             // 
-            this.pnlPlot19.Location = new System.Drawing.Point(0, 1170);
+            this.pnlPlot19.Location = new System.Drawing.Point(0, 608);
+            this.pnlPlot19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot19.Name = "pnlPlot19";
-            this.pnlPlot19.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot19.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot19.TabIndex = 2;
             // 
             // pnlPlot20
             // 
-            this.pnlPlot20.Location = new System.Drawing.Point(0, 1040);
+            this.pnlPlot20.Location = new System.Drawing.Point(0, 541);
+            this.pnlPlot20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot20.Name = "pnlPlot20";
-            this.pnlPlot20.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot20.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot20.TabIndex = 2;
             // 
             // pnlPlot21
             // 
-            this.pnlPlot21.Location = new System.Drawing.Point(0, 910);
+            this.pnlPlot21.Location = new System.Drawing.Point(0, 473);
+            this.pnlPlot21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot21.Name = "pnlPlot21";
-            this.pnlPlot21.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot21.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot21.TabIndex = 2;
             // 
             // pnlPlot22
             // 
-            this.pnlPlot22.Location = new System.Drawing.Point(0, 780);
+            this.pnlPlot22.Location = new System.Drawing.Point(0, 406);
+            this.pnlPlot22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot22.Name = "pnlPlot22";
-            this.pnlPlot22.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot22.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot22.TabIndex = 2;
             // 
             // pnlPlot23
             // 
-            this.pnlPlot23.Location = new System.Drawing.Point(0, 650);
+            this.pnlPlot23.Location = new System.Drawing.Point(0, 338);
+            this.pnlPlot23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot23.Name = "pnlPlot23";
-            this.pnlPlot23.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot23.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot23.TabIndex = 2;
             // 
             // pnlPlot24
             // 
-            this.pnlPlot24.Location = new System.Drawing.Point(0, 520);
+            this.pnlPlot24.Location = new System.Drawing.Point(0, 270);
+            this.pnlPlot24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot24.Name = "pnlPlot24";
-            this.pnlPlot24.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot24.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot24.TabIndex = 2;
             // 
             // pnlPlot25
             // 
-            this.pnlPlot25.Location = new System.Drawing.Point(0, 390);
+            this.pnlPlot25.Location = new System.Drawing.Point(0, 203);
+            this.pnlPlot25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot25.Name = "pnlPlot25";
-            this.pnlPlot25.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot25.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot25.TabIndex = 2;
             // 
             // pnlPlot26
             // 
-            this.pnlPlot26.Location = new System.Drawing.Point(0, 260);
+            this.pnlPlot26.Location = new System.Drawing.Point(0, 135);
+            this.pnlPlot26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot26.Name = "pnlPlot26";
-            this.pnlPlot26.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot26.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot26.TabIndex = 2;
             // 
             // pnlPlot27
             // 
-            this.pnlPlot27.Location = new System.Drawing.Point(0, 130);
+            this.pnlPlot27.Location = new System.Drawing.Point(0, 68);
+            this.pnlPlot27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot27.Name = "pnlPlot27";
-            this.pnlPlot27.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot27.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot27.TabIndex = 2;
             // 
             // pnlPlot28
             // 
             this.pnlPlot28.Location = new System.Drawing.Point(0, 0);
+            this.pnlPlot28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlot28.Name = "pnlPlot28";
-            this.pnlPlot28.Size = new System.Drawing.Size(130, 130);
+            this.pnlPlot28.Size = new System.Drawing.Size(65, 68);
             this.pnlPlot28.TabIndex = 2;
             // 
             // txtbConsole
             // 
-            this.txtbConsole.Location = new System.Drawing.Point(633, 0);
+            this.txtbConsole.Location = new System.Drawing.Point(316, 0);
+            this.txtbConsole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbConsole.Multiline = true;
             this.txtbConsole.Name = "txtbConsole";
-            this.txtbConsole.Size = new System.Drawing.Size(535, 300);
+            this.txtbConsole.Size = new System.Drawing.Size(270, 158);
             this.txtbConsole.TabIndex = 3;
             // 
             // pnlPlayer1
             // 
             this.pnlPlayer1.Controls.Add(this.lblPlayer1);
-            this.pnlPlayer1.Location = new System.Drawing.Point(130, 0);
+            this.pnlPlayer1.Location = new System.Drawing.Point(65, 0);
+            this.pnlPlayer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlayer1.Name = "pnlPlayer1";
-            this.pnlPlayer1.Size = new System.Drawing.Size(125, 300);
+            this.pnlPlayer1.Size = new System.Drawing.Size(62, 156);
             this.pnlPlayer1.TabIndex = 4;
             // 
             // lblPlayer1
             // 
             this.lblPlayer1.AutoSize = true;
             this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1.Location = new System.Drawing.Point(14, 10);
+            this.lblPlayer1.Location = new System.Drawing.Point(7, 5);
+            this.lblPlayer1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer1.Name = "lblPlayer1";
-            this.lblPlayer1.Size = new System.Drawing.Size(97, 31);
+            this.lblPlayer1.Size = new System.Drawing.Size(51, 17);
             this.lblPlayer1.TabIndex = 0;
             this.lblPlayer1.Text = "**P1**";
             // 
             // pnlPlayer2
             // 
             this.pnlPlayer2.Controls.Add(this.lblPlayer2);
-            this.pnlPlayer2.Location = new System.Drawing.Point(255, 0);
+            this.pnlPlayer2.Location = new System.Drawing.Point(128, 0);
+            this.pnlPlayer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlayer2.Name = "pnlPlayer2";
-            this.pnlPlayer2.Size = new System.Drawing.Size(125, 300);
+            this.pnlPlayer2.Size = new System.Drawing.Size(62, 156);
             this.pnlPlayer2.TabIndex = 5;
             // 
             // lblPlayer2
             // 
             this.lblPlayer2.AutoSize = true;
             this.lblPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold);
-            this.lblPlayer2.Location = new System.Drawing.Point(14, 10);
+            this.lblPlayer2.Location = new System.Drawing.Point(7, 5);
+            this.lblPlayer2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer2.Name = "lblPlayer2";
-            this.lblPlayer2.Size = new System.Drawing.Size(97, 31);
+            this.lblPlayer2.Size = new System.Drawing.Size(51, 17);
             this.lblPlayer2.TabIndex = 0;
             this.lblPlayer2.Text = "**P2**";
             // 
             // pnlPlayer3
             // 
             this.pnlPlayer3.Controls.Add(this.lblPlayer3);
-            this.pnlPlayer3.Location = new System.Drawing.Point(380, 0);
+            this.pnlPlayer3.Location = new System.Drawing.Point(190, 0);
+            this.pnlPlayer3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlayer3.Name = "pnlPlayer3";
-            this.pnlPlayer3.Size = new System.Drawing.Size(125, 300);
+            this.pnlPlayer3.Size = new System.Drawing.Size(62, 156);
             this.pnlPlayer3.TabIndex = 5;
             // 
             // lblPlayer3
             // 
             this.lblPlayer3.AutoSize = true;
             this.lblPlayer3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold);
-            this.lblPlayer3.Location = new System.Drawing.Point(14, 10);
+            this.lblPlayer3.Location = new System.Drawing.Point(7, 5);
+            this.lblPlayer3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer3.Name = "lblPlayer3";
-            this.lblPlayer3.Size = new System.Drawing.Size(97, 31);
+            this.lblPlayer3.Size = new System.Drawing.Size(51, 17);
             this.lblPlayer3.TabIndex = 0;
             this.lblPlayer3.Text = "**P3**";
             // 
             // pnlPlayer4
             // 
             this.pnlPlayer4.Controls.Add(this.lblPlayer4);
-            this.pnlPlayer4.Location = new System.Drawing.Point(505, 0);
+            this.pnlPlayer4.Location = new System.Drawing.Point(252, 0);
+            this.pnlPlayer4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPlayer4.Name = "pnlPlayer4";
-            this.pnlPlayer4.Size = new System.Drawing.Size(125, 300);
+            this.pnlPlayer4.Size = new System.Drawing.Size(62, 156);
             this.pnlPlayer4.TabIndex = 5;
             // 
             // lblPlayer4
             // 
             this.lblPlayer4.AutoSize = true;
             this.lblPlayer4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold);
-            this.lblPlayer4.Location = new System.Drawing.Point(14, 10);
+            this.lblPlayer4.Location = new System.Drawing.Point(7, 5);
+            this.lblPlayer4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer4.Name = "lblPlayer4";
-            this.lblPlayer4.Size = new System.Drawing.Size(97, 31);
+            this.lblPlayer4.Size = new System.Drawing.Size(51, 17);
             this.lblPlayer4.TabIndex = 0;
             this.lblPlayer4.Text = "**P4**";
             // 
             // frmBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1300, 1300);
+            this.ClientSize = new System.Drawing.Size(657, 685);
             this.Controls.Add(this.pnlPlayer4);
             this.Controls.Add(this.pnlPlayer3);
             this.Controls.Add(this.pnlPlayer2);
@@ -389,9 +426,11 @@ namespace Monopoly
             this.Controls.Add(this.pnlPlot4);
             this.Controls.Add(this.pnlPlot1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBoard";
+            this.Load += new System.EventHandler(this.frmBoard_Load);
             this.pnlPlayer1.ResumeLayout(false);
             this.pnlPlayer1.PerformLayout();
             this.pnlPlayer2.ResumeLayout(false);

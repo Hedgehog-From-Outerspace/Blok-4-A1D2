@@ -11,16 +11,14 @@ namespace Monopoly
         public int Id { get; set; }
         public string Name { get; set; }
         public int Money { get; set; }
-        public string Color { get; set; }
         public Plot OccupiedPlot { get; set; }
         private DAL dal;
 
-        public Player(int _Id, string _Name, string _Color)
+        public Player(int _Id, string _Name)
         {
             Id = _Id;
             Name = _Name;
-            Money = 0;       //According to monopoly rules (Subject to change)
-            Color = _Color;
+            Money = 200;       //According to monopoly rules (Subject to change)
             dal = new DAL();
         }
 
