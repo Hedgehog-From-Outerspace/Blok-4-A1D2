@@ -19,6 +19,7 @@ namespace Monopoly
             Id = id;
             QuestionText = questionText;
             Answer = answer;
+            dal = new DAL();
         }
 
         public Question()
@@ -26,9 +27,18 @@ namespace Monopoly
             dal = new DAL();
         }
 
-        public bool CheckAnswer()
+        public bool CheckAnswer(string Answer)
         {
-            return true;
+            bool result;
+            if (this.Answer == Answer)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
 
         public void AddCategory(Category _category)

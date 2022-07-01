@@ -14,39 +14,34 @@ namespace Monopoly
         [STAThread]
         static void Main()
         {
-            List<Player> list = new List<Player>();
-            list.Add(new Player(1, "Joes", "Groen"));
-            list.Add(new Player(2, "Hassan", "Rood"));
-            list.Add(new Player(3, "Lotte", "Geel"));
-
-            //test main while loop
-            PlayGame(list);
-
+            Game game = new Game(0);
+            Board board = new Board(0);
+            Category category = new Category(0, "Test", "Een test ykno"); 
+            List<Player> Players = new List<Player>();
+            Players.Add(new Player(0, "Hassan"));
+            Players.Add(new Player(1, "Joes"));
+            Players.Add(new Player(2, "Lotte"));
+            game.AddPlayers(Players);
+            game.AddBoard(board);
+            game.AddCategory(category);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new frmMain());
+            Application.Run(new frmBoard(game));
         }
 
         private static void PlayGame(List<Player> list)
         {
-            Game game = new Game(0, "new game", list);
+            Category category = new Category();
+            Game game = new Game(0);
             bool endGame = false;
             while (endGame == false)
             {
                 game.HandleTurn();
                 //determine endGame
-                foreach (Player player in list)
-                {
-                    if (player.Money <= 0)
-                    {
-                        endGame = true;
-                    }
-                }
+                endGame = game.CheckIfBankrupt(list);
             }
             game.DetermineWinner();
         }
-
-        //ERRORS ARE AVOIDED WITH ADDCLASS METHOD
     }
 }

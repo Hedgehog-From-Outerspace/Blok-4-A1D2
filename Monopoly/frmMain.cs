@@ -39,10 +39,11 @@ namespace Monopoly
             frmCategoryOverview CategoryOverview = new frmCategoryOverview();
             CategoryOverview.ShowDialog();
         }
-        private void btnPlayQuiz_Click(object sender, EventArgs e)
+        
+        private void btnManageGames_Click(object sender, EventArgs e)
         {
-            frmPlayQuiz PlayQuiz = new frmPlayQuiz();
-            PlayQuiz.ShowDialog();
+            frmGameOverview GameOverview = new frmGameOverview();
+            GameOverview.ShowDialog();
         }
 
         private void frmMain_MouseDown(object sender, MouseEventArgs e)
@@ -70,6 +71,5 @@ namespace Monopoly
             Close();
         }
 
-        
     }
 }
