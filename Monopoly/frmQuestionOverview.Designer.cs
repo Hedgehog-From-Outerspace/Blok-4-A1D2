@@ -39,9 +39,9 @@ namespace Monopoly
             this.txtbQuestionAnswer = new System.Windows.Forms.TextBox();
             this.btnAddQuestion = new System.Windows.Forms.Button();
             this.lblClose = new System.Windows.Forms.Label();
-            this.QuestionText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnEditQuestion = new System.Windows.Forms.Button();
+            this.GameQuestion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GameAnswer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuestions)).BeginInit();
             this.SuspendLayout();
@@ -50,8 +50,7 @@ namespace Monopoly
             // 
             this.lblSelectedCategory.AutoSize = true;
             this.lblSelectedCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedCategory.Location = new System.Drawing.Point(122, 5);
-            this.lblSelectedCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSelectedCategory.Location = new System.Drawing.Point(353, 9);
             this.lblSelectedCategory.Name = "lblSelectedCategory";
             this.lblSelectedCategory.Size = new System.Drawing.Size(186, 17);
             this.lblSelectedCategory.TabIndex = 0;
@@ -64,9 +63,8 @@ namespace Monopoly
             this.dgvQuestions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuestions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.QuestionText,
-            this.Answer,
-            this.Edit,
+            this.GameQuestion,
+            this.GameAnswer,
             this.Delete});
             this.dgvQuestions.Location = new System.Drawing.Point(20, 23);
             this.dgvQuestions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -75,8 +73,7 @@ namespace Monopoly
             this.dgvQuestions.RowHeadersVisible = false;
             this.dgvQuestions.RowHeadersWidth = 82;
             this.dgvQuestions.RowTemplate.Height = 33;
-            this.dgvQuestions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvQuestions.Size = new System.Drawing.Size(385, 116);
+            this.dgvQuestions.Size = new System.Drawing.Size(966, 224);
             this.dgvQuestions.TabIndex = 1;
             this.dgvQuestions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuestions_CellContentClick);
             // 
@@ -145,45 +142,39 @@ namespace Monopoly
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
-            // QuestionText
+            // btnEditQuestion
             // 
-            this.QuestionText.DataPropertyName = "QuestionText";
-            this.QuestionText.HeaderText = "Question Text";
-            this.QuestionText.Name = "QuestionText";
-            this.QuestionText.ReadOnly = true;
+            this.btnEditQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditQuestion.Location = new System.Drawing.Point(836, 275);
+            this.btnEditQuestion.Name = "btnEditQuestion";
+            this.btnEditQuestion.Size = new System.Drawing.Size(170, 90);
+            this.btnEditQuestion.TabIndex = 6;
+            this.btnEditQuestion.Text = "Edit Question";
+            this.btnEditQuestion.UseVisualStyleBackColor = true;
             // 
-            // Answer
+            // GameQuestion
             // 
-            this.Answer.DataPropertyName = "Answer";
-            this.Answer.HeaderText = "Answer";
-            this.Answer.Name = "Answer";
-            this.Answer.ReadOnly = true;
+            this.GameQuestion.DataPropertyName = "Question";
+            this.GameQuestion.HeaderText = "Question";
+            this.GameQuestion.MinimumWidth = 10;
+            this.GameQuestion.Name = "GameQuestion";
+            this.GameQuestion.ReadOnly = true;
             // 
-            // Edit
+            // GameAnswer
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Edit.HeaderText = "Edit Question";
-            this.Edit.MinimumWidth = 10;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
+            this.GameAnswer.DataPropertyName = "Answer";
+            this.GameAnswer.HeaderText = "Answer";
+            this.GameAnswer.MinimumWidth = 10;
+            this.GameAnswer.Name = "GameAnswer";
+            this.GameAnswer.ReadOnly = true;
             // 
             // Delete
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Firebrick;
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle6;
             this.Delete.HeaderText = "Delete Question";
             this.Delete.MinimumWidth = 10;
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // frmQuestionOverview
             // 
@@ -191,8 +182,9 @@ namespace Monopoly
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(425, 210);
+            this.ClientSize = new System.Drawing.Size(1038, 396);
             this.Controls.Add(this.lblClose);
+            this.Controls.Add(this.btnEditQuestion);
             this.Controls.Add(this.btnAddQuestion);
             this.Controls.Add(this.txtbQuestionAnswer);
             this.Controls.Add(this.txtbQuestionName);
@@ -226,9 +218,9 @@ namespace Monopoly
         private System.Windows.Forms.TextBox txtbQuestionAnswer;
         private System.Windows.Forms.Button btnAddQuestion;
         private System.Windows.Forms.Label lblClose;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuestionText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Answer;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GameQuestion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GameAnswer;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button btnEditQuestion;
     }
 }
