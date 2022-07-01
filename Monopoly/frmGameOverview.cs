@@ -60,5 +60,11 @@ namespace Monopoly
         {
             Close();
         }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            frmPlayQuiz PlayQuiz = new frmPlayQuiz();
+            PlayQuiz.ShowDialog();
+        }
     }
 }

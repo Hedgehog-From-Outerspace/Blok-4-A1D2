@@ -41,14 +41,17 @@ namespace Monopoly
             this.btnPlay = new System.Windows.Forms.Button();
             this.lblSelectedCategory = new System.Windows.Forms.Label();
             this.cboxCategories = new System.Windows.Forms.ComboBox();
+            this.txtbGameName = new System.Windows.Forms.TextBox();
+            this.lblGameName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblColorRed
             // 
             this.lblColorRed.AutoSize = true;
+            this.lblColorRed.BackColor = System.Drawing.Color.Transparent;
             this.lblColorRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColorRed.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblColorRed.Location = new System.Drawing.Point(45, 130);
+            this.lblColorRed.Location = new System.Drawing.Point(45, 230);
             this.lblColorRed.Name = "lblColorRed";
             this.lblColorRed.Size = new System.Drawing.Size(87, 37);
             this.lblColorRed.TabIndex = 2;
@@ -57,9 +60,10 @@ namespace Monopoly
             // lblColorGreen
             // 
             this.lblColorGreen.AutoSize = true;
+            this.lblColorGreen.BackColor = System.Drawing.Color.Transparent;
             this.lblColorGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColorGreen.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblColorGreen.Location = new System.Drawing.Point(235, 130);
+            this.lblColorGreen.Location = new System.Drawing.Point(235, 230);
             this.lblColorGreen.Name = "lblColorGreen";
             this.lblColorGreen.Size = new System.Drawing.Size(120, 37);
             this.lblColorGreen.TabIndex = 3;
@@ -68,9 +72,10 @@ namespace Monopoly
             // lblColorYellow
             // 
             this.lblColorYellow.AutoSize = true;
+            this.lblColorYellow.BackColor = System.Drawing.Color.Transparent;
             this.lblColorYellow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblColorYellow.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblColorYellow.Location = new System.Drawing.Point(45, 230);
+            this.lblColorYellow.Location = new System.Drawing.Point(45, 340);
             this.lblColorYellow.Name = "lblColorYellow";
             this.lblColorYellow.Size = new System.Drawing.Size(127, 37);
             this.lblColorYellow.TabIndex = 4;
@@ -79,8 +84,9 @@ namespace Monopoly
             // lblColorBlue
             // 
             this.lblColorBlue.AutoSize = true;
+            this.lblColorBlue.BackColor = System.Drawing.Color.Transparent;
             this.lblColorBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColorBlue.Location = new System.Drawing.Point(235, 230);
+            this.lblColorBlue.Location = new System.Drawing.Point(235, 340);
             this.lblColorBlue.Name = "lblColorBlue";
             this.lblColorBlue.Size = new System.Drawing.Size(94, 37);
             this.lblColorBlue.TabIndex = 5;
@@ -88,28 +94,28 @@ namespace Monopoly
             // 
             // txtbColorRedName
             // 
-            this.txtbColorRedName.Location = new System.Drawing.Point(50, 170);
+            this.txtbColorRedName.Location = new System.Drawing.Point(50, 270);
             this.txtbColorRedName.Name = "txtbColorRedName";
             this.txtbColorRedName.Size = new System.Drawing.Size(120, 31);
             this.txtbColorRedName.TabIndex = 6;
             // 
             // txtbColorGreenName
             // 
-            this.txtbColorGreenName.Location = new System.Drawing.Point(240, 170);
+            this.txtbColorGreenName.Location = new System.Drawing.Point(240, 270);
             this.txtbColorGreenName.Name = "txtbColorGreenName";
             this.txtbColorGreenName.Size = new System.Drawing.Size(120, 31);
             this.txtbColorGreenName.TabIndex = 6;
             // 
             // txtbColorYellowName
             // 
-            this.txtbColorYellowName.Location = new System.Drawing.Point(50, 270);
+            this.txtbColorYellowName.Location = new System.Drawing.Point(50, 380);
             this.txtbColorYellowName.Name = "txtbColorYellowName";
             this.txtbColorYellowName.Size = new System.Drawing.Size(120, 31);
             this.txtbColorYellowName.TabIndex = 6;
             // 
             // txtbColorBlueName
             // 
-            this.txtbColorBlueName.Location = new System.Drawing.Point(240, 270);
+            this.txtbColorBlueName.Location = new System.Drawing.Point(240, 380);
             this.txtbColorBlueName.Name = "txtbColorBlueName";
             this.txtbColorBlueName.Size = new System.Drawing.Size(120, 31);
             this.txtbColorBlueName.TabIndex = 6;
@@ -129,7 +135,7 @@ namespace Monopoly
             // btnPlay
             // 
             this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(52, 337);
+            this.btnPlay.Location = new System.Drawing.Point(47, 440);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(313, 121);
             this.btnPlay.TabIndex = 0;
@@ -140,6 +146,7 @@ namespace Monopoly
             // lblSelectedCategory
             // 
             this.lblSelectedCategory.AutoSize = true;
+            this.lblSelectedCategory.BackColor = System.Drawing.Color.Transparent;
             this.lblSelectedCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectedCategory.Location = new System.Drawing.Point(55, 15);
             this.lblSelectedCategory.Name = "lblSelectedCategory";
@@ -155,12 +162,32 @@ namespace Monopoly
             this.cboxCategories.Size = new System.Drawing.Size(308, 33);
             this.cboxCategories.TabIndex = 9;
             // 
+            // txtbGameName
+            // 
+            this.txtbGameName.Location = new System.Drawing.Point(47, 160);
+            this.txtbGameName.Name = "txtbGameName";
+            this.txtbGameName.Size = new System.Drawing.Size(313, 31);
+            this.txtbGameName.TabIndex = 10;
+            // 
+            // lblGameName
+            // 
+            this.lblGameName.AutoSize = true;
+            this.lblGameName.BackColor = System.Drawing.Color.Transparent;
+            this.lblGameName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.lblGameName.Location = new System.Drawing.Point(40, 120);
+            this.lblGameName.Name = "lblGameName";
+            this.lblGameName.Size = new System.Drawing.Size(195, 37);
+            this.lblGameName.TabIndex = 11;
+            this.lblGameName.Text = "Spel Naam:";
+            // 
             // frmPlayQuiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(412, 508);
+            this.ClientSize = new System.Drawing.Size(408, 600);
+            this.Controls.Add(this.lblGameName);
+            this.Controls.Add(this.txtbGameName);
             this.Controls.Add(this.cboxCategories);
             this.Controls.Add(this.lblSelectedCategory);
             this.Controls.Add(this.lblClose);
@@ -198,5 +225,7 @@ namespace Monopoly
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label lblSelectedCategory;
         private System.Windows.Forms.ComboBox cboxCategories;
+        private System.Windows.Forms.TextBox txtbGameName;
+        private System.Windows.Forms.Label lblGameName;
     }
 }

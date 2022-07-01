@@ -39,11 +39,7 @@ namespace Monopoly
             frmCategoryOverview CategoryOverview = new frmCategoryOverview();
             CategoryOverview.ShowDialog();
         }
-        private void btnPlayQuiz_Click(object sender, EventArgs e)
-        {
-            frmPlayQuiz PlayQuiz = new frmPlayQuiz();
-            PlayQuiz.ShowDialog();
-        }
+        
         private void btnManageGames_Click(object sender, EventArgs e)
         {
             frmGameOverview GameOverview = new frmGameOverview();
