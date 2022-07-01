@@ -32,11 +32,12 @@ namespace Monopoly
             this.lblChosenGame = new System.Windows.Forms.Label();
             this.lblCloseButton = new System.Windows.Forms.Label();
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtbPlayerName = new System.Windows.Forms.TextBox();
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.btnAddPlayer = new System.Windows.Forms.Button();
             this.btnEditPlayer = new System.Windows.Forms.Button();
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlayers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,21 +71,16 @@ namespace Monopoly
             this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PlayerName,
             this.Delete});
             this.dgvPlayers.Location = new System.Drawing.Point(56, 63);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
+            this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidth = 82;
             this.dgvPlayers.RowTemplate.Height = 33;
             this.dgvPlayers.Size = new System.Drawing.Size(576, 228);
             this.dgvPlayers.TabIndex = 2;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.MinimumWidth = 10;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
             // 
             // txtbPlayerName
             // 
@@ -124,6 +120,21 @@ namespace Monopoly
             this.btnEditPlayer.Text = "Edit";
             this.btnEditPlayer.UseVisualStyleBackColor = true;
             // 
+            // PlayerName
+            // 
+            this.PlayerName.DataPropertyName = "Name";
+            this.PlayerName.HeaderText = "Name";
+            this.PlayerName.MinimumWidth = 10;
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.MinimumWidth = 10;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            // 
             // frmPlayerOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -155,10 +166,11 @@ namespace Monopoly
         private System.Windows.Forms.Label lblChosenGame;
         private System.Windows.Forms.Label lblCloseButton;
         private System.Windows.Forms.DataGridView dgvPlayers;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.TextBox txtbPlayerName;
         private System.Windows.Forms.Label lblPlayerName;
         private System.Windows.Forms.Button btnAddPlayer;
         private System.Windows.Forms.Button btnEditPlayer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }
