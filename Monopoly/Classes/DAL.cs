@@ -36,6 +36,8 @@ namespace Monopoly
             }
             return categoryList;
         }
+
+
         public void CreateCategory(Category category)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -51,6 +53,8 @@ namespace Monopoly
                 }
             }
         }
+
+
         public void UpdateCategory (Category category)
         {
              using (SqlConnection connection = new SqlConnection(connectionString))
@@ -66,6 +70,8 @@ namespace Monopoly
                 }
             }
         }
+
+
         public void DeleteCategory (Category category)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -82,6 +88,8 @@ namespace Monopoly
                 }
             }
         }
+
+
 
         // CRUD Question
         public List<Question> ReadQuestionList(Category category)
@@ -110,6 +118,8 @@ namespace Monopoly
             }
             return questionList;
         }
+
+
         public void CreateQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -125,6 +135,8 @@ namespace Monopoly
                 }
             }
         }
+
+
         public void UpdateQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -141,6 +153,8 @@ namespace Monopoly
             }
 
         }
+
+
         public void DeleteQuestion (Question question)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -155,28 +169,91 @@ namespace Monopoly
             }
         }
 
-        //CRUD Game
-        public List<Game> ReadGameList()
+
+
+        // CRUD Player
+        public List<Player> ReadPlayerList()
         {
-            List<Game> gameList = new List<Game>();
-            return gameList;
+            List<Player> playerList = new List<Player>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "SELECT * FROM Player_Table";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, connection))
+                {               
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Player player = new Player(Int32.Parse(reader[0].ToString()),
+                                                   reader[1].ToString(),
+                                                   reader[2].ToString(),
+                                                   );
+                            playerList.Add(player);
+                        }
+                    }
+                }
+            }
+            return playerList;
         }
-        public void CreateGame()
+
+
+        public void CreatePlayer(Player player)
         {
-
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string SQL = "INSERT INTO Player_Table (Name, Color, Money, OccupiedPlotId) VALUES (@Name, @Color, @Money, @OccupiedPlotId)"
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", player.Name);
+                    cmd.Parameters.AddWithValue("@Color", player.Color);
+                    cmd.Parameters.AddWithValue("@Money", player.Money);
+                    cmd.Parameters.AddWithValue("@OccupiedPlotId", player.OccupiedPlot.Id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
-        public void UpdateGame()
+
+
+        public void UpdatePlayer(Player player)
         {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            { 
+                string SQL = "UPDATE Player_Table SET Name = @Name, Color = @Color, Money = @Money, OccupiedPlotId = @OccupiedPlotId WHERE PlayerId = @PlayerId";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(@SQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PlayerId", player.Id);
+                    cmd.Parameters.AddWithValue("@Name", player.Name);
+                    cmd.Parameters.AddWithValue("@Color", player.Color);
+                    cmd.Parameters.AddWithValue("@Money", player.Money);
+                    cmd.Parameters.AddWithValue("@OccupiedPlotId", player.OccupiedPlot.Id);               
+                    cmd.ExecuteNonQuery();
+                }
 
+
+            }
         }
-        public void DeleteGame()
+
+
+        public void DeletePlayer(Player player)
         {
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "DELETE Player_Table WHERE PlayerId = @PlayerId";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("@PlayerId", player.Id);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
-        //CRUD Board
 
-        //CRUD Player
+
+
 
         // READ Plot
         public List<Plot> ReadStandardPlotList()
