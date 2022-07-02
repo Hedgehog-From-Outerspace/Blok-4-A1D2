@@ -93,11 +93,18 @@ namespace Monopoly
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
-            Player player = new Player(0, txtbPlayerName.Text);
-            player.Create(game);
-            dgvPlayers.DataSource = player.GetGamePlayerList(game);
-            MessageBox.Show("De speler is aangemaakt!");
-            txtbPlayerName.Text = string.Empty;
+            if(game.Players.Count < 4)
+            {
+                Player player = new Player(0, txtbPlayerName.Text);
+                player.Create(game);
+                dgvPlayers.DataSource = player.GetGamePlayerList(game);
+                MessageBox.Show("De speler is aangemaakt!");
+                txtbPlayerName.Text = string.Empty;
+            }
+            else if (game.Players.Count >= 4)
+            {
+                MessageBox.Show("Je kan maar 4 spelers toevoegen aan het spel!");
+            }
         }
 
         private void btnEditPlayer_Click(object sender, EventArgs e)

@@ -143,7 +143,6 @@ namespace Monopoly
         public void AddPlayers(List<Player> Players)
         {
             this.Players = Players;
-            GetFirstPlayer();
         }
 
         public void AddBoard(Board board)

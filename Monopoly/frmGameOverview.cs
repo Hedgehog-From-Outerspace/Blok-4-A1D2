@@ -87,11 +87,13 @@ namespace Monopoly
             {
                 frmPlayerOverview frm = new frmPlayerOverview(game);
                 frm.ShowDialog();
+                dgvGameOverview.DataSource = game.GetList();
             }
             //Play Button
             else if(column == 3)
             {
-
+                frmBoard board = new frmBoard(game);
+                board.ShowDialog();
             }
             //Delete Button
             else if (column == 4)
