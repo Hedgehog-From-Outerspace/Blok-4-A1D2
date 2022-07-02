@@ -9,16 +9,26 @@ namespace Monopoly
     public class Game
     {
         public int Id { get; set; }
+        public string Name { get; set; }    
         public Category Category { get; set; }
+        public string CategoryName { get; set; }
         public List<Player> Players { get; set; }
         public Player CurrentPlayer { get; set; }
         public Board Board { get; set; }
         public List<Question> Questions { get; set; }
+        private DAL dal;
 
-        public Game(int _Id) //List of questions
+        public Game(int _Id, string _Name) //List of questions
         {
             Id = _Id;
+            Name = _Name;
             Questions = new List<Question>();
+            dal = new DAL();
+        }
+
+        public Game()
+        {
+            dal = new DAL();
         }
 
         public void HandleTurn()
@@ -127,6 +137,7 @@ namespace Monopoly
         public void AddCategory(Category category)
         {
             this.Category = category;
+            this.CategoryName = category.Name;
         }
 
         public void AddPlayers(List<Player> Players)
@@ -179,7 +190,7 @@ namespace Monopoly
         private int Wrap (int input, int min, int max)
         {
             //To Wrap around from the end of the list to the start of the list
-            //Using modulo makes using input numbers larger than 2 * max possible
+            //Using modulo makes using input numbers larger than 2 * max possible (or 2*min i guess)
             if (input< min)
             {
                 return max-(min-input)%(max-min);
@@ -188,6 +199,21 @@ namespace Monopoly
             {
                 return min+(input-min)%(max-min);
             }
+        }
+        
+        public List<Game> GetList()
+        {
+            return dal.ReadGameList();
+        }
+        
+        public void Create(Game game)
+        {
+            dal.CreateGame(game);
+        }
+
+        public void Delete(Game game)
+        {
+            dal.DeleteGame(game);
         }
     }
 }

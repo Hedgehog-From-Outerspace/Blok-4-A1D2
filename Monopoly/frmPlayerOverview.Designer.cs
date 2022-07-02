@@ -29,6 +29,7 @@ namespace Monopoly
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblChosenGame = new System.Windows.Forms.Label();
             this.lblCloseButton = new System.Windows.Forms.Label();
             this.dgvPlayers = new System.Windows.Forms.DataGridView();
@@ -46,9 +47,9 @@ namespace Monopoly
             this.lblChosenGame.AutoSize = true;
             this.lblChosenGame.BackColor = System.Drawing.Color.Transparent;
             this.lblChosenGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Bold);
-            this.lblChosenGame.Location = new System.Drawing.Point(130, 9);
+            this.lblChosenGame.Location = new System.Drawing.Point(119, 9);
             this.lblChosenGame.Name = "lblChosenGame";
-            this.lblChosenGame.Size = new System.Drawing.Size(427, 51);
+            this.lblChosenGame.Size = new System.Drawing.Size(377, 44);
             this.lblChosenGame.TabIndex = 0;
             this.lblChosenGame.Text = "**CHOSEN GAME**";
             // 
@@ -57,9 +58,9 @@ namespace Monopoly
             this.lblCloseButton.AutoSize = true;
             this.lblCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold);
             this.lblCloseButton.ForeColor = System.Drawing.Color.Red;
-            this.lblCloseButton.Location = new System.Drawing.Point(12, 9);
+            this.lblCloseButton.Location = new System.Drawing.Point(11, 9);
             this.lblCloseButton.Name = "lblCloseButton";
-            this.lblCloseButton.Size = new System.Drawing.Size(27, 25);
+            this.lblCloseButton.Size = new System.Drawing.Size(25, 24);
             this.lblCloseButton.TabIndex = 1;
             this.lblCloseButton.Text = "X";
             this.lblCloseButton.Click += new System.EventHandler(this.lblCloseButton_Click);
@@ -68,25 +69,28 @@ namespace Monopoly
             // 
             this.dgvPlayers.AllowUserToAddRows = false;
             this.dgvPlayers.AllowUserToDeleteRows = false;
+            this.dgvPlayers.AllowUserToResizeColumns = false;
+            this.dgvPlayers.AllowUserToResizeRows = false;
             this.dgvPlayers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerName,
             this.Delete});
-            this.dgvPlayers.Location = new System.Drawing.Point(56, 63);
+            this.dgvPlayers.Location = new System.Drawing.Point(51, 60);
             this.dgvPlayers.Name = "dgvPlayers";
             this.dgvPlayers.ReadOnly = true;
             this.dgvPlayers.RowHeadersVisible = false;
             this.dgvPlayers.RowHeadersWidth = 82;
             this.dgvPlayers.RowTemplate.Height = 33;
-            this.dgvPlayers.Size = new System.Drawing.Size(576, 228);
+            this.dgvPlayers.Size = new System.Drawing.Size(528, 219);
             this.dgvPlayers.TabIndex = 2;
+            this.dgvPlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlayers_CellClick);
             // 
             // txtbPlayerName
             // 
-            this.txtbPlayerName.Location = new System.Drawing.Point(90, 332);
+            this.txtbPlayerName.Location = new System.Drawing.Point(82, 319);
             this.txtbPlayerName.Name = "txtbPlayerName";
-            this.txtbPlayerName.Size = new System.Drawing.Size(170, 31);
+            this.txtbPlayerName.Size = new System.Drawing.Size(156, 29);
             this.txtbPlayerName.TabIndex = 3;
             // 
             // lblPlayerName
@@ -94,31 +98,33 @@ namespace Monopoly
             this.lblPlayerName.AutoSize = true;
             this.lblPlayerName.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold);
-            this.lblPlayerName.Location = new System.Drawing.Point(84, 298);
+            this.lblPlayerName.Location = new System.Drawing.Point(77, 286);
             this.lblPlayerName.Name = "lblPlayerName";
-            this.lblPlayerName.Size = new System.Drawing.Size(99, 31);
+            this.lblPlayerName.Size = new System.Drawing.Size(88, 29);
             this.lblPlayerName.TabIndex = 4;
             this.lblPlayerName.Text = "Naam:";
             // 
             // btnAddPlayer
             // 
             this.btnAddPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnAddPlayer.Location = new System.Drawing.Point(288, 298);
+            this.btnAddPlayer.Location = new System.Drawing.Point(264, 286);
             this.btnAddPlayer.Name = "btnAddPlayer";
-            this.btnAddPlayer.Size = new System.Drawing.Size(152, 65);
+            this.btnAddPlayer.Size = new System.Drawing.Size(139, 62);
             this.btnAddPlayer.TabIndex = 5;
             this.btnAddPlayer.Text = "Add";
             this.btnAddPlayer.UseVisualStyleBackColor = true;
+            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
             // 
             // btnEditPlayer
             // 
             this.btnEditPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnEditPlayer.Location = new System.Drawing.Point(446, 298);
+            this.btnEditPlayer.Location = new System.Drawing.Point(409, 286);
             this.btnEditPlayer.Name = "btnEditPlayer";
-            this.btnEditPlayer.Size = new System.Drawing.Size(152, 65);
+            this.btnEditPlayer.Size = new System.Drawing.Size(139, 62);
             this.btnEditPlayer.TabIndex = 6;
             this.btnEditPlayer.Text = "Edit";
             this.btnEditPlayer.UseVisualStyleBackColor = true;
+            this.btnEditPlayer.Click += new System.EventHandler(this.btnEditPlayer_Click);
             // 
             // PlayerName
             // 
@@ -130,17 +136,23 @@ namespace Monopoly
             // 
             // Delete
             // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Firebrick;
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle4;
             this.Delete.HeaderText = "Delete";
             this.Delete.MinimumWidth = 10;
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // frmPlayerOverview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Monopoly.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(686, 398);
+            this.ClientSize = new System.Drawing.Size(629, 382);
             this.Controls.Add(this.btnEditPlayer);
             this.Controls.Add(this.btnAddPlayer);
             this.Controls.Add(this.lblPlayerName);
@@ -152,6 +164,7 @@ namespace Monopoly
             this.Name = "frmPlayerOverview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPlayerOverview";
+            this.Load += new System.EventHandler(this.frmPlayerOverview_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmPlayerOverview_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPlayerOverview_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmPlayerOverview_MouseUp);

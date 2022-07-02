@@ -48,24 +48,35 @@ namespace Monopoly
             return message;
         }
 
-        public void Create()
+        public void Edit(int id, string name)
         {
+            Id = id;
+            Name = name;
+        }
 
+        public void Create(Game game)
+        {
+            dal.CreatePlayer(this, game);
         }
 
         public void Update()
         {
-
+            dal.UpdatePlayer(this);
         }
 
-        public void Delete()
+        public void Delete(Game game)
         {
-
+            dal.DeletePlayer(this, game);
         }
 
         public List<Player> GetList()
         {
             return new List<Player>();
+        }
+
+        public List<Player> GetGamePlayerList(Game game)
+        {
+            return dal.ReadGamePlayerList(game);
         }
     }
 }

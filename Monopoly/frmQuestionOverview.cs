@@ -29,6 +29,7 @@ namespace Monopoly
         private Point _start_point = new Point(0, 0);
 
         private Category category;
+        private Question question;
 
         public frmQuestionOverview(Category _category)
         {
@@ -77,25 +78,42 @@ namespace Monopoly
             question.AddCategory(category);
             question.Create(question);
             dgvQuestions.DataSource = question.GetList(category);
+            txtbQuestionName.Text = txtbQuestionAnswer.Text = string.Empty;
             MessageBox.Show("Vraag aangemaakt!");
         }
 
-        private void dgvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvQuestions_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var row = e.RowIndex;
             var column = e.ColumnIndex;
+            Console.WriteLine($"Row: {row} Column: {column}");
+
+            question = dgvQuestions.CurrentRow.DataBoundItem as Question;
+            txtbQuestionName.Text = question.QuestionText;
+            txtbQuestionAnswer.Text = question.Answer;
 
             //Delete Button
-            if (column == 3)
+            if (column == 2)
             {
-                if (MessageBox.Show("Weet je zeker dat je de category wil verwijderen?", "Delete Category", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Weet je zeker dat je de vraag wil verwijderen?", "Delete vraag", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    var question = dgvQuestions.CurrentRow.DataBoundItem as Question;
+
                     question.Delete(question);
                     dgvQuestions.DataSource = question.GetList(category);
                     MessageBox.Show("De vraag is verwijderd");
                 }
             }
+        }
+
+        private void btnEditQuestion_Click(object sender, EventArgs e)
+        {
+            //How to try catch this, if you delete the prev edited question. The question in question will be null.
+            question = dgvQuestions.CurrentRow.DataBoundItem as Question;
+            question.Edit(txtbQuestionName.Text, txtbQuestionAnswer.Text);
+            question.Update(question);
+            dgvQuestions.DataSource = question.GetList(category);
+            txtbQuestionName.Text = txtbQuestionAnswer.Text = string.Empty;
+            MessageBox.Show("Vraag bewerkt!");
         }
     }
 }
