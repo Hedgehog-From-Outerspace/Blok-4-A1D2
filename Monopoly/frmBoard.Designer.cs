@@ -38,6 +38,7 @@ namespace Monopoly
             this.lblPlayer3 = new System.Windows.Forms.Label();
             this.pnlPlayer4 = new System.Windows.Forms.Panel();
             this.lblPlayer4 = new System.Windows.Forms.Label();
+            this.btnQuitGame = new System.Windows.Forms.Button();
             this.pnlPlayer1.SuspendLayout();
             this.pnlPlayer2.SuspendLayout();
             this.pnlPlayer3.SuspendLayout();
@@ -47,7 +48,7 @@ namespace Monopoly
             // txtbConsole
             // 
             this.txtbConsole.Location = new System.Drawing.Point(609, 0);
-            this.txtbConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtbConsole.Margin = new System.Windows.Forms.Padding(4);
             this.txtbConsole.Multiline = true;
             this.txtbConsole.Name = "txtbConsole";
             this.txtbConsole.Size = new System.Drawing.Size(570, 300);
@@ -57,7 +58,7 @@ namespace Monopoly
             // 
             this.pnlPlayer1.Controls.Add(this.lblPlayer1);
             this.pnlPlayer1.Location = new System.Drawing.Point(133, 0);
-            this.pnlPlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPlayer1.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPlayer1.Name = "pnlPlayer1";
             this.pnlPlayer1.Size = new System.Drawing.Size(124, 300);
             this.pnlPlayer1.TabIndex = 4;
@@ -77,7 +78,7 @@ namespace Monopoly
             // 
             this.pnlPlayer2.Controls.Add(this.lblPlayer2);
             this.pnlPlayer2.Location = new System.Drawing.Point(252, 0);
-            this.pnlPlayer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPlayer2.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPlayer2.Name = "pnlPlayer2";
             this.pnlPlayer2.Size = new System.Drawing.Size(124, 300);
             this.pnlPlayer2.TabIndex = 5;
@@ -97,7 +98,7 @@ namespace Monopoly
             // 
             this.pnlPlayer3.Controls.Add(this.lblPlayer3);
             this.pnlPlayer3.Location = new System.Drawing.Point(371, 0);
-            this.pnlPlayer3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPlayer3.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPlayer3.Name = "pnlPlayer3";
             this.pnlPlayer3.Size = new System.Drawing.Size(124, 300);
             this.pnlPlayer3.TabIndex = 5;
@@ -117,7 +118,7 @@ namespace Monopoly
             // 
             this.pnlPlayer4.Controls.Add(this.lblPlayer4);
             this.pnlPlayer4.Location = new System.Drawing.Point(490, 0);
-            this.pnlPlayer4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPlayer4.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPlayer4.Name = "pnlPlayer4";
             this.pnlPlayer4.Size = new System.Drawing.Size(124, 300);
             this.pnlPlayer4.TabIndex = 5;
@@ -133,6 +134,19 @@ namespace Monopoly
             this.lblPlayer4.TabIndex = 0;
             this.lblPlayer4.Text = "**P4**";
             // 
+            // btnQuitGame
+            // 
+            this.btnQuitGame.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnQuitGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitGame.ForeColor = System.Drawing.Color.Red;
+            this.btnQuitGame.Location = new System.Drawing.Point(530, 320);
+            this.btnQuitGame.Name = "btnQuitGame";
+            this.btnQuitGame.Size = new System.Drawing.Size(253, 79);
+            this.btnQuitGame.TabIndex = 6;
+            this.btnQuitGame.Text = "Quit Game";
+            this.btnQuitGame.UseVisualStyleBackColor = false;
+            this.btnQuitGame.Click += new System.EventHandler(this.btnQuitGame_Click);
+            // 
             // frmBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -140,6 +154,7 @@ namespace Monopoly
             this.BackgroundImage = global::Monopoly.Properties.Resources.bordv2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1314, 1317);
+            this.Controls.Add(this.btnQuitGame);
             this.Controls.Add(this.pnlPlayer4);
             this.Controls.Add(this.pnlPlayer3);
             this.Controls.Add(this.pnlPlayer2);
@@ -147,7 +162,7 @@ namespace Monopoly
             this.Controls.Add(this.txtbConsole);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBoard";
@@ -175,5 +190,6 @@ namespace Monopoly
         private System.Windows.Forms.Label lblPlayer3;
         private System.Windows.Forms.Panel pnlPlayer4;
         private System.Windows.Forms.Label lblPlayer4;
+        private System.Windows.Forms.Button btnQuitGame;
     }
 }

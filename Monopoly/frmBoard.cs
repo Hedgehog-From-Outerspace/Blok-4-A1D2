@@ -24,5 +24,10 @@ namespace Monopoly
             txtbConsole.ReadOnly = true;
             txtbConsole.Text = "Test\r\nDit is een test!";
         }
+
+        private void btnQuitGame_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
