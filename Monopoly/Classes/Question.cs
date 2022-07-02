@@ -46,6 +46,12 @@ namespace Monopoly
             Category = _category;
         }
 
+        public void Edit(string _questionText, string _answer)
+        {
+            QuestionText = _questionText;
+            Answer = _answer;
+        }
+
         public void Create(Question question)
         {
             dal.CreateQuestion(question);

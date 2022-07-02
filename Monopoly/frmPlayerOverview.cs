@@ -29,8 +29,12 @@ namespace Monopoly
         private Point _offset;
         private Point _start_point = new Point(0, 0);
 
-        public frmPlayerOverview()
+        private Game game;
+        private Player player;
+
+        public frmPlayerOverview(Game game)
         {
+            this.game = game;
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 40, 40));
         }
@@ -39,13 +43,11 @@ namespace Monopoly
         {
             Close();
         }
-
         private void frmPlayerOverview_MouseDown(object sender, MouseEventArgs e)
         {
             _dragging = true;
             _start_point = new Point(e.X, e.Y);
         }
-
         private void frmPlayerOverview_MouseMove(object sender, MouseEventArgs e)
         {
             if (_dragging)
@@ -54,10 +56,58 @@ namespace Monopoly
                 Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
             }
         }
-
         private void frmPlayerOverview_MouseUp(object sender, MouseEventArgs e)
         {
             _dragging = false;
+        }
+
+        private void frmPlayerOverview_Load(object sender, EventArgs e)
+        {
+            Player player = new Player();
+            dgvPlayers.AutoGenerateColumns = false;
+            dgvPlayers.DataSource = player.GetGamePlayerList(game);
+            lblChosenGame.Text = game.Name;
+        }
+
+        private void dgvPlayers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = e.RowIndex;
+            var column = e.ColumnIndex;
+            Console.WriteLine($"Row: {row} Column: {column}");
+            Player player = dgvPlayers.CurrentRow.DataBoundItem as Player;
+
+            txtbPlayerName.Text = player.Name;
+
+            //Delete Button
+            if (column == 1)
+            {
+                if (MessageBox.Show("Weet je zeker dat je de speler wil verwijderen?", "Delete speler", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    player.Delete(game);
+                    dgvPlayers.DataSource = player.GetGamePlayerList(game);
+                    MessageBox.Show("De speler is verwijderd!");
+                    txtbPlayerName.Text = string.Empty;
+                }
+            }
+        }
+
+        private void btnAddPlayer_Click(object sender, EventArgs e)
+        {
+            Player player = new Player(0, txtbPlayerName.Text);
+            player.Create(game);
+            dgvPlayers.DataSource = player.GetGamePlayerList(game);
+            MessageBox.Show("De speler is aangemaakt!");
+            txtbPlayerName.Text = string.Empty;
+        }
+
+        private void btnEditPlayer_Click(object sender, EventArgs e)
+        {
+            Player player = dgvPlayers.CurrentRow.DataBoundItem as Player;
+            player.Edit(player.Id, txtbPlayerName.Text);
+            player.Update();
+            dgvPlayers.DataSource = player.GetGamePlayerList(game);
+            MessageBox.Show("De speler is aangepast!");
+            txtbPlayerName.Text = string.Empty;
         }
     }
 }

@@ -63,8 +63,47 @@ namespace Monopoly
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
+            Game game = new Game();
             frmPlayQuiz PlayQuiz = new frmPlayQuiz();
             PlayQuiz.ShowDialog();
+            dgvGameOverview.DataSource = game.GetList();
+        }
+
+        private void frmGameOverview_Load(object sender, EventArgs e)
+        {
+            Game game = new Game();
+            dgvGameOverview.AutoGenerateColumns = false;
+            dgvGameOverview.DataSource = game.GetList();
+        }
+
+        private void dgvGameOverview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = e.RowIndex;
+            var column = e.ColumnIndex;
+            Console.WriteLine($"Row: {row} Column: {column}");
+            Game game = dgvGameOverview.CurrentRow.DataBoundItem as Game;
+            //Players Button
+            if(column == 2)
+            {
+                frmPlayerOverview frm = new frmPlayerOverview(game);
+                frm.ShowDialog();
+            }
+            //Play Button
+            else if(column == 3)
+            {
+
+            }
+            //Delete Button
+            else if (column == 4)
+            {
+                if (MessageBox.Show("Weet je zeker dat je de game wil verwijderen?", "Delete vraag", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    game.Delete(game);
+                    dgvGameOverview.DataSource = game.GetList();
+                    MessageBox.Show("De game is verwijderd");
+                }
+            }
         }
     }
 }

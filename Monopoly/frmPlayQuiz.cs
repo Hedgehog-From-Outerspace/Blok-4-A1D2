@@ -27,6 +27,9 @@ namespace Monopoly
         private bool _dragging = false;
         private Point _offset;
         private Point _start_point = new Point(0, 0);
+
+        Category selectedCategory;
+
         public frmPlayQuiz()
         {
             InitializeComponent();
@@ -60,8 +63,23 @@ namespace Monopoly
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            //frmBoard Board = new frmBoard();
-            //Board.ShowDialog();
+            Game game = new Game(0, txtbGameName.Text);
+            game.AddCategory(selectedCategory);
+            game.Create(game);
+            MessageBox.Show("De game is aangemaakt!");
+            this.Close();
+        }
+
+        private void frmPlayQuiz_Load(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            cboxCategories.DataSource = category.GetList();
+            cboxCategories.DisplayMember = "Name";
+        }
+
+        private void cboxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCategory = cboxCategories.SelectedItem as Category;
         }
     }
 }
