@@ -12,6 +12,65 @@ namespace Monopoly
     {
         public string connectionString = "Data Source=.;Initial Catalog=StudieApp;Integrated Security=True";
 
+        //CRUD Game
+        public List<Game> ReadGameList()
+        {
+            List<Game> gameList = new List<Game>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                String Sql = "Select * FROM Game_Table";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Game game = new Game(Int32.Parse(reader[0].ToString()),
+                                                            reader[1].ToString()
+                                                        );
+                            game.AddCategory(ReadCategory(Int32.Parse(reader[2].ToString())));
+                            gameList.Add(game);
+                        }
+                    }
+                }
+            }
+            return gameList;
+        }
+        public void CreateGame(Game game)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "INSERT INTO Game_Table(Name, CategoryId) VALUES (@Name, @CategoryId)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("@CategoryId", game.Category.Id);
+                    command.Parameters.AddWithValue("@Name", game.Name);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void UpdateGame()
+        {
+
+        }
+        public void DeleteGame(Game game)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string SQL = "DELETE Game_Table WHERE GameId = @GameId";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@GameId", game.Id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        
+        
         // CRUD Category
         public List<Category> ReadCategoryList()
         {
@@ -35,6 +94,30 @@ namespace Monopoly
                 }
             }
             return categoryList;
+        }
+        public Category ReadCategory(int Id)
+        {
+            Category category = new Category();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                String Sql = "Select * FROM Category_Table WHERE CategoryId = @Id";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            category = new Category(Int32.Parse(reader[0].ToString()),
+                                                        reader[1].ToString(),
+                                                        reader[2].ToString()
+                                                        );
+                        }
+                    }
+                }
+            }
+            return category;
         }
         public void CreateCategory(Category category)
         {
@@ -82,6 +165,8 @@ namespace Monopoly
                 }
             }
         }
+
+
 
         // CRUD Question
         public List<Question> ReadQuestionList(Category category)
@@ -155,39 +240,146 @@ namespace Monopoly
             }
         }
 
-        //CRUD Game
-        public List<Game> ReadGameList()
+
+
+        // CRUD Player
+        public List<Player> ReadPlayerList()
         {
-            List<Game> gameList = new List<Game>();
-            return gameList;
+            List<Player> playerList = new List<Player>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "SELECT * FROM Player_Table";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Player player = new Player(Int32.Parse(reader[0].ToString()),
+                                                   reader[1].ToString()
+                                                   );
+                            playerList.Add(player);
+                        }
+                    }
+                }
+            }
+            return playerList;
         }
-        public void CreateGame()
+        public List<Player> ReadGamePlayerList(Game game)
         {
-
+            List<Player> playerList = new List<Player>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "SELECT Player_Table.* FROM Player_Table, GamePlayer_Table WHERE GamePlayer_Table.GameId = @GameId AND Player_Table.PlayerId = GamePlayer_Table.PlayerId;";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, connection))
+                {
+                    cmd.Parameters.AddWithValue("@GameId", game.Id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Player player = new Player(Int32.Parse(reader[0].ToString()),
+                                                   reader[1].ToString()
+                                                   );
+                            playerList.Add(player);
+                        }
+                    }
+                }
+            }
+            return playerList;
         }
-        public void UpdateGame()
+        public void CreatePlayer(Player player, Game game)
         {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string SQL = "INSERT INTO Player_Table (Name, Money) VALUES (@Name, @Money);";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(SQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Name", player.Name);
+                    cmd.Parameters.AddWithValue("@Money", player.Money);
+                    cmd.ExecuteNonQuery();
 
+                    cmd.CommandText = "SELECT CAST (@@Identity AS INT);";
+                    int id = (int)cmd.ExecuteScalar();
+                    player.Edit(id, player.Name);
+
+                    cmd.CommandText = "INSERT INTO GamePlayer_Table (GameId, PlayerId) VALUES (@GameId, @PlayerId);";
+                    cmd.Parameters.AddWithValue("@GameId", game.Id);
+                    cmd.Parameters.AddWithValue("@PlayerId", player.Id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
-        public void DeleteGame()
+        public void UpdatePlayer(Player player)
         {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            { 
+                string SQL = "UPDATE Player_Table SET Name = @Name,  Money = @Money WHERE PlayerId = @PlayerId";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(@SQL, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PlayerId", player.Id);
+                    cmd.Parameters.AddWithValue("@Name", player.Name);
+                    cmd.Parameters.AddWithValue("@Money", player.Money);             
+                    cmd.ExecuteNonQuery();
+                }
 
+
+            }
+        }
+        public void DeletePlayer(Player player, Game game)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string SQL = "DELETE GamePlayer_Table WHERE PlayerId = @PlayerId AND GameId = @GameId";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("@PlayerId", player.Id);
+                    command.Parameters.AddWithValue("@GameId", game.Id);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
-        //CRUD Board
 
-        //CRUD Player
 
         // READ Plot
-        public List<Plot> ReadPlotList()
+        public List<Plot> ReadStandardPlotList()
         {
+            //Read first 29 plots
             List<Plot> plotList = new List<Plot>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string Sql = "SELECT * FROM Plot_Table";
+                string Sql = "SELECT TOP 29 * FROM Plot_Table";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(Sql, connection))
                 {
+                    using (SqlDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            plotList.Add(new Plot(Int32.Parse(dataReader[0].ToString()), dataReader[1].ToString()));
+                        }
+                    }
+                }
+            }
+            return plotList;
+        }
+        public List<Plot> ReadPlotList(Board board)
+        {
+            //Read Plots that belong to boardId
+            List<Plot> plotList = new List<Plot>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string Sql = "SELECT * FROM Plot_Table WHERE BoardId = @BoardId";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(Sql, connection))
+                {
+                    command.Parameters.AddWithValue("@BoardId", board.Id);
                     using (SqlDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
@@ -201,15 +393,37 @@ namespace Monopoly
         }
 
         // READ Cards
-        public List<Card> ReadCardList()
+        public List<Card> ReadStandardCardList()
+        {
+            //Read first 15 cards
+            List<Card> cardList = new List<Card>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string Sql = "SELECT TOP 15 * FROM Card_Table";
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(Sql, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            cardList.Add(new Card(Int32.Parse(reader[0].ToString()), reader[1].ToString(), reader[2].ToString()));
+                        }
+                    }
+                }
+            }
+            return cardList;
+        }
+        public List<Card> ReadCardList(Board board)
         {
             List<Card> cardList = new List<Card>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string Sql = "SELECT * FROM Card_Table";
+                string Sql = "SELECT * FROM Card_Table WHERE BoardId = @BoardId";
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(Sql, conn))
                 {
+                    cmd.Parameters.AddWithValue("@BoardId", board.Id);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

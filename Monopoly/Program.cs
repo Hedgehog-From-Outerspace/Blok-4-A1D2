@@ -20,10 +20,8 @@ namespace Monopoly
             Application.Run(new frmMain());
         }
 
-        private static void PlayGame(List<Player> list)
+        /*private static void PlayGame(List<Player> list)
         {
-            Category category = new Category();
-            Game game = new Game(0, list, category);
             bool endGame = false;
             while (endGame == false)
             {
@@ -32,6 +30,6 @@ namespace Monopoly
                 endGame = game.CheckIfBankrupt(list);
             }
             game.DetermineWinner();
-        }
+        }*/
     }
 }

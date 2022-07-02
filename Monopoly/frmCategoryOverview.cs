@@ -72,6 +72,7 @@ namespace Monopoly
             category.Create(category);
             dgvCategories.DataSource = category.GetList();
             MessageBox.Show("Category Added!");
+            txtbCategoryName.Text = string.Empty;
         }
 
         private void dgvCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
