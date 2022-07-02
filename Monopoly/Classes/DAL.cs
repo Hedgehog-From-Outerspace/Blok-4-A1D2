@@ -30,6 +30,9 @@ namespace Monopoly
                                                             reader[1].ToString()
                                                         );
                             game.AddCategory(ReadCategory(Int32.Parse(reader[2].ToString())));
+
+                            game.AddPlayers(ReadGamePlayerList(game));
+
                             gameList.Add(game);
                         }
                     }
@@ -59,11 +62,13 @@ namespace Monopoly
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string SQL = "DELETE Game_Table WHERE GameId = @GameId";
+                string SQL = "DELETE GamePlayer_Table WHERE GameId = @GameId;";
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(SQL, conn))
                 {
                     cmd.Parameters.AddWithValue("@GameId", game.Id);
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "DELETE Game_Table WHERE GameId = @GameId"; 
                     cmd.ExecuteNonQuery();
                 }
             }
