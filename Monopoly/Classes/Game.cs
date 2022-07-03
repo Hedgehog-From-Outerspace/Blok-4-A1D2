@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Monopoly
 {
     public class Game
@@ -17,11 +16,13 @@ namespace Monopoly
         public Board Board { get; set; }
         public List<Question> Questions { get; set; }
         private DAL dal;
+        public int Turn { get; set; }
 
         public Game(int _Id, string _Name) //List of questions
         {
             Id = _Id;
             Name = _Name;
+            Turn = 0;
             Questions = new List<Question>();
             dal = new DAL();
         }
@@ -31,54 +32,35 @@ namespace Monopoly
             dal = new DAL();
         }
 
-        public void HandleTurn()
+        public void Initialize()
         {
-            MovePlayer();
-            //CHECK IF EVENT PLOT OR HOUSE PLOT
-            if (CurrentPlayer.OccupiedPlot.PlotType.Contains("House1"))
+            GetFirstPlayer();
+            Board board = new Board(0);
+            AddBoard(board);
+            foreach(Player player in Players)
             {
-                EncounterHouse();
+                player.OccupiedPlot = Board.Plots[0];
             }
-            else if (CurrentPlayer.OccupiedPlot.PlotType.Contains("House2"))
-            {
-                EncounterHouse();
-            }
-            else if (CurrentPlayer.OccupiedPlot.PlotType.Contains("House3"))
-            {
-                EncounterHouse();
-            }
-            else if (CurrentPlayer.OccupiedPlot.PlotType.Contains("Card"))
-            {
-                EncounterCard();
-            }
-            else if (CurrentPlayer.OccupiedPlot.PlotType.Contains("Jail"))
-            {
-                EncounterJail();
-            }
-
-            CurrentPlayer = GetNextPlayer();
         }
 
-        //Method to randomly determine starting player
-        public Player GetFirstPlayer()
+        public void GetFirstPlayer()
         {
             var random = new Random();
             int index = random.Next(Players.Count);
-            return Players[index];
+            CurrentPlayer = Players[index];
         }
 
-        public Player GetNextPlayer()
+        public void GetNextPlayer()
         {
-            //Current Player is moved to the next in the list
             Players.IndexOf(CurrentPlayer);
             int index = Wrap(Players.IndexOf(CurrentPlayer) + 1, 0, Players.Count());
-            return Players[index];
+            CurrentPlayer = Players[index];
         }
 
         public Player DetermineWinner()
         {
             //Player with most money + price owned buildings wins
-            return new Player(0, "Winner");
+            return Players[0];
         }
 
         public bool CheckIfBankrupt(List<Player> list)
@@ -95,9 +77,26 @@ namespace Monopoly
             return isBankrupt;
         }
 
-        public void EncounterCard()
+        public Card EncounterCard()
         {
+            Card card = new Card();
+            if (Board.Deck.Count > 0)
+            {
+                var random = new Random();
+                int index = random.Next(Board.Deck.Count);
+                card = Board.Deck[index];
 
+            }
+            else
+            {
+                Board.Deck.Clear();
+                card.GetList(Board);
+
+                var random = new Random();
+                int index = random.Next(Board.Deck.Count);
+                card = Board.Deck[index];
+            }
+            return card;
         }
 
         public void EncounterJail()
@@ -107,7 +106,7 @@ namespace Monopoly
 
         public void EncounterHouse()
         {
-            if (CurrentPlayer.OccupiedPlot.Owner != null)
+            /*if (CurrentPlayer.OccupiedPlot.Owner != null)
             {
                 Question question = GetQuestion();
                 //Show in UI
@@ -131,7 +130,7 @@ namespace Monopoly
                 //Option to buy plot
                 //If buy plot, player loses money
                 string message = CurrentPlayer.BuyPlot(CurrentPlayer.OccupiedPlot);
-            }
+            }*/
         }
 
         public void AddCategory(Category category)

@@ -19,17 +19,5 @@ namespace Monopoly
 
             Application.Run(new frmMain());
         }
-
-        /*private static void PlayGame(List<Player> list)
-        {
-            bool endGame = false;
-            while (endGame == false)
-            {
-                game.HandleTurn();
-                //determine endGame
-                endGame = game.CheckIfBankrupt(list);
-            }
-            game.DetermineWinner();
-        }*/
     }
 }

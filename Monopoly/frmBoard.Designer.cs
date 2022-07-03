@@ -31,18 +31,19 @@ namespace Monopoly
         {
             this.txtbConsole = new System.Windows.Forms.TextBox();
             this.pnlPlayer1 = new System.Windows.Forms.Panel();
+            this.labelP1Money = new System.Windows.Forms.Label();
             this.lblPlayer1 = new System.Windows.Forms.Label();
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
+            this.labelP2Money = new System.Windows.Forms.Label();
             this.lblPlayer2 = new System.Windows.Forms.Label();
             this.pnlPlayer3 = new System.Windows.Forms.Panel();
+            this.labelP3Money = new System.Windows.Forms.Label();
             this.lblPlayer3 = new System.Windows.Forms.Label();
             this.pnlPlayer4 = new System.Windows.Forms.Panel();
+            this.labelP4Money = new System.Windows.Forms.Label();
             this.lblPlayer4 = new System.Windows.Forms.Label();
             this.btnQuitGame = new System.Windows.Forms.Button();
-            this.labelP1Money = new System.Windows.Forms.Label();
-            this.labelP2Money = new System.Windows.Forms.Label();
-            this.labelP3Money = new System.Windows.Forms.Label();
-            this.labelP4Money = new System.Windows.Forms.Label();
+            this.btnStartGame = new System.Windows.Forms.Button();
             this.pnlPlayer1.SuspendLayout();
             this.pnlPlayer2.SuspendLayout();
             this.pnlPlayer3.SuspendLayout();
@@ -56,6 +57,7 @@ namespace Monopoly
             this.txtbConsole.Margin = new System.Windows.Forms.Padding(4);
             this.txtbConsole.Multiline = true;
             this.txtbConsole.Name = "txtbConsole";
+            this.txtbConsole.ReadOnly = true;
             this.txtbConsole.Size = new System.Drawing.Size(523, 288);
             this.txtbConsole.TabIndex = 3;
             // 
@@ -68,6 +70,17 @@ namespace Monopoly
             this.pnlPlayer1.Name = "pnlPlayer1";
             this.pnlPlayer1.Size = new System.Drawing.Size(114, 288);
             this.pnlPlayer1.TabIndex = 4;
+            // 
+            // labelP1Money
+            // 
+            this.labelP1Money.AutoSize = true;
+            this.labelP1Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelP1Money.Location = new System.Drawing.Point(2, 130);
+            this.labelP1Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP1Money.Name = "labelP1Money";
+            this.labelP1Money.Size = new System.Drawing.Size(99, 29);
+            this.labelP1Money.TabIndex = 1;
+            this.labelP1Money.Text = "**200**";
             // 
             // lblPlayer1
             // 
@@ -90,6 +103,17 @@ namespace Monopoly
             this.pnlPlayer2.Size = new System.Drawing.Size(114, 288);
             this.pnlPlayer2.TabIndex = 5;
             // 
+            // labelP2Money
+            // 
+            this.labelP2Money.AutoSize = true;
+            this.labelP2Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelP2Money.Location = new System.Drawing.Point(4, 130);
+            this.labelP2Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP2Money.Name = "labelP2Money";
+            this.labelP2Money.Size = new System.Drawing.Size(99, 29);
+            this.labelP2Money.TabIndex = 2;
+            this.labelP2Money.Text = "**200**";
+            // 
             // lblPlayer2
             // 
             this.lblPlayer2.AutoSize = true;
@@ -110,6 +134,17 @@ namespace Monopoly
             this.pnlPlayer3.Name = "pnlPlayer3";
             this.pnlPlayer3.Size = new System.Drawing.Size(114, 288);
             this.pnlPlayer3.TabIndex = 5;
+            // 
+            // labelP3Money
+            // 
+            this.labelP3Money.AutoSize = true;
+            this.labelP3Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelP3Money.Location = new System.Drawing.Point(2, 130);
+            this.labelP3Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP3Money.Name = "labelP3Money";
+            this.labelP3Money.Size = new System.Drawing.Size(99, 29);
+            this.labelP3Money.TabIndex = 3;
+            this.labelP3Money.Text = "**200**";
             // 
             // lblPlayer3
             // 
@@ -132,6 +167,17 @@ namespace Monopoly
             this.pnlPlayer4.Size = new System.Drawing.Size(114, 288);
             this.pnlPlayer4.TabIndex = 5;
             // 
+            // labelP4Money
+            // 
+            this.labelP4Money.AutoSize = true;
+            this.labelP4Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelP4Money.Location = new System.Drawing.Point(4, 130);
+            this.labelP4Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelP4Money.Name = "labelP4Money";
+            this.labelP4Money.Size = new System.Drawing.Size(99, 29);
+            this.labelP4Money.TabIndex = 4;
+            this.labelP4Money.Text = "**200**";
+            // 
             // lblPlayer4
             // 
             this.lblPlayer4.AutoSize = true;
@@ -148,7 +194,7 @@ namespace Monopoly
             this.btnQuitGame.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnQuitGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitGame.ForeColor = System.Drawing.Color.Red;
-            this.btnQuitGame.Location = new System.Drawing.Point(486, 307);
+            this.btnQuitGame.Location = new System.Drawing.Point(694, 307);
             this.btnQuitGame.Name = "btnQuitGame";
             this.btnQuitGame.Size = new System.Drawing.Size(232, 76);
             this.btnQuitGame.TabIndex = 6;
@@ -156,49 +202,18 @@ namespace Monopoly
             this.btnQuitGame.UseVisualStyleBackColor = false;
             this.btnQuitGame.Click += new System.EventHandler(this.btnQuitGame_Click);
             // 
-            // labelP1Money
+            // btnStartGame
             // 
-            this.labelP1Money.AutoSize = true;
-            this.labelP1Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP1Money.Location = new System.Drawing.Point(2, 130);
-            this.labelP1Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelP1Money.Name = "labelP1Money";
-            this.labelP1Money.Size = new System.Drawing.Size(99, 29);
-            this.labelP1Money.TabIndex = 1;
-            this.labelP1Money.Text = "**200**";
-            // 
-            // labelP2Money
-            // 
-            this.labelP2Money.AutoSize = true;
-            this.labelP2Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP2Money.Location = new System.Drawing.Point(4, 130);
-            this.labelP2Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelP2Money.Name = "labelP2Money";
-            this.labelP2Money.Size = new System.Drawing.Size(99, 29);
-            this.labelP2Money.TabIndex = 2;
-            this.labelP2Money.Text = "**200**";
-            // 
-            // labelP3Money
-            // 
-            this.labelP3Money.AutoSize = true;
-            this.labelP3Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP3Money.Location = new System.Drawing.Point(2, 130);
-            this.labelP3Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelP3Money.Name = "labelP3Money";
-            this.labelP3Money.Size = new System.Drawing.Size(99, 29);
-            this.labelP3Money.TabIndex = 3;
-            this.labelP3Money.Text = "**200**";
-            // 
-            // labelP4Money
-            // 
-            this.labelP4Money.AutoSize = true;
-            this.labelP4Money.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelP4Money.Location = new System.Drawing.Point(4, 130);
-            this.labelP4Money.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelP4Money.Name = "labelP4Money";
-            this.labelP4Money.Size = new System.Drawing.Size(99, 29);
-            this.labelP4Money.TabIndex = 4;
-            this.labelP4Money.Text = "**200**";
+            this.btnStartGame.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnStartGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartGame.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnStartGame.Location = new System.Drawing.Point(269, 307);
+            this.btnStartGame.Name = "btnStartGame";
+            this.btnStartGame.Size = new System.Drawing.Size(232, 76);
+            this.btnStartGame.TabIndex = 7;
+            this.btnStartGame.Text = "Start Game";
+            this.btnStartGame.UseVisualStyleBackColor = false;
+            this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
             // frmBoard
             // 
@@ -207,6 +222,7 @@ namespace Monopoly
             this.BackgroundImage = global::Monopoly.Properties.Resources.bordv2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1204, 1264);
+            this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.btnQuitGame);
             this.Controls.Add(this.pnlPlayer4);
             this.Controls.Add(this.pnlPlayer3);
@@ -248,5 +264,6 @@ namespace Monopoly
         private System.Windows.Forms.Label labelP2Money;
         private System.Windows.Forms.Label labelP3Money;
         private System.Windows.Forms.Label labelP4Money;
+        private System.Windows.Forms.Button btnStartGame;
     }
 }
