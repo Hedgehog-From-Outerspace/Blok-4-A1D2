@@ -100,7 +100,6 @@ namespace Monopoly
             {
                 if (MessageBox.Show("Weet je zeker dat je de game wil verwijderen?", "Delete vraag", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-
                     game.Delete(game);
                     dgvGameOverview.DataSource = game.GetList();
                     MessageBox.Show("De game is verwijderd");
